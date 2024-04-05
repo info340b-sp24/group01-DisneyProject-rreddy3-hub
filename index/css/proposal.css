@@ -1,0 +1,14 @@
+header {
+    background-color: purple;
+    color: white;
+    text-align: center;
+}
+
+h2 {
+    background-color: mediumpurple;
+    color: white;
+}
+
+.summary {
+    color: purple;
+}
