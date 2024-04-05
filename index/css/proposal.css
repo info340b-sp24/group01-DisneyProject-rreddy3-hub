@@ -12,3 +12,7 @@ h2 {
 .summary {
     color: purple;
 }
+
+h2:hover {
+    background-color: lightpink;
+}
