@@ -4,6 +4,12 @@
     color: orange;
 }
 
+footer {
+    position: fixed; 
+    bottom: 0;
+    left: 0; 
+} 
+
 
 
 
