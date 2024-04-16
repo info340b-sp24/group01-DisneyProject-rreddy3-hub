@@ -4,17 +4,76 @@
     <meta charset="utf-8">
     <meta name="author" content="Julie Noh, Kyra Diaz, Tina Song, & Rishita Reddy">
     <meta name="description" content="Example meal page for the first project draft">
-    <title>Example Meal Page: Gyro Fries at Aladdin's</title>
+    <title>Example Meal Page: Beef and Lamb Sandwich from Aladdin's</title>
 </head>
 <body>
     <!-- Home Button/Navigation -->
-
-    <!-- Image of Meal -->
+    <nav>
+        <button type="button">Home</button>
+        <button type="button">Favorites</button>
+    </nav>
     
-    <!-- Description (Name, Rating, Heart, Restaurant, Location, Price) -->
+    <header>
+        <!-- Description (Name, Rating, Heart, Restaurant, Location, Price) -->
+        <h1>Gyro Lamb and Beef Sandwich</h1>
+        <h2>Aladdin's Gyro-Cery</h2>
+        <a href="https://www.google.com/maps/dir/47.6512256,-122.3196672/aladdins+gyrocery/@47.6543674,-122.3275141,15z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x549014f359463677:0xd7b29936f0579d15!2m2!1d-122.3133702!2d47.657982?entry=ttu">Aladdin Gyro-Cery & Deli, 4139 University Wy NE, Seattle, WA 98105</a>
+        <!-- Insert aggregate rating here? -->
+        <button type="button">Add to Favorites</button>
+    </header>
 
+    <main>
+        <!-- Image of Meal -->
+        <img src="img/meal-page-ex.jpg" alt="gyro from random restaurant">
+        
+        <!-- Initial Review -->
+        <h3>Review by: notkyraxo</h3>
+        <!-- Insert rating here -->
+        <p>
+            One of the best gyro sandwiches in the U-District! The staff is really
+            friendly and they're always open late, which is a plus. The mix 
+            of beef and lamb is really superior. Plus it's pretty affordable!
+        </p>
+    </main>
+    
     <!-- Add Review... -->
+    <div class="add-review">
+        <form>
+            <label for="new-review">Write a review...</label><br>
+            <input type="text" id="new-review" name="new-review"><br>
+        </form>
+
+        <!-- Rating -->
+    </div>
 
     <!-- Previous Reviews -->
+    <div class="reviews">
+        <div class="review-1">
+            <h4>randomryan</h4>
+            <!-- Insert rating here -->
+            <p>
+                This one's pretty good, but I prefer the other Aladdin's location 
+                closer to the old Target. There's a difference!
+            </p>
+        </div>
+        <div class="review-2">
+            <h4>madeupmarushka</h4>
+            <!-- Insert rating here -->
+            <p>
+                Love this place, and love this meal!
+            </p>
+        </div>
+        <div class="review-3">
+            <h4>totallyrealrachel</h4>
+            <!-- Insert rating here -->
+            <p>
+                The tzaziki sauce is a little too sour for me, but the meat itself 
+                is well-seasoned! Overall pretty yummy!
+            </p>
+        </div>
+    </div>
 </body>
+<footer>
+
+</footer>
 </html>
