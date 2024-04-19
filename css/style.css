@@ -14,6 +14,24 @@ body {
     padding: 0;
 }
 
+.header-text {
+    margin-left: 2rem;
+}
+
+.column-container {
+    display: flex;
+    height: 50%;
+}
+
+.column-container img {
+    height: 25%;
+}
+
+.card {
+    background-color: #c7c9c8;
+    margin-bottom: 2rem;
+}
+
 .container {
     max-width: 800px;
     margin: 0 auto;
