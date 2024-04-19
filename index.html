@@ -18,18 +18,45 @@
         <div class="header-text">
             <h1>UW Crave</h1>
             <input type="text" placeholder="Search...">
-
+            <button type="button" class="btn btn-light">
+                <a href="add-meal.html">Add Meal</a>
+            </button>
+            <button type="button" class="btn btn-light">
+                <a href="favorites-list.html">Favorites &#x2665;</a>
+            </button>
             <!-- Filters -->
             <div>
-                <label><input type="checkbox" name="price"> Price</label>
-                <label><input type="checkbox" name="cuisine"> Cuisine</label>
-                <label><input type="checkbox" name="rating"> Rating</label>
-                <button type="button" class="btn-light">
-                    <a href="add-meal.html">Add Meal</a>
-                </button>
-                <button type="button" class="btn-light">
-                    <a href="favorites-list.html">Favorites &#x2665;</a>
-                </button>
+                <label for="Price">Price:</label>
+
+                <select name="cars" id="cars">
+                    <option value="$">$</option>
+                    <option value="$$">$$</option>
+                    <option value="$$$">$$$</option>
+                    <option value="$$$$">$$$$</option>
+                </select>
+
+                <label for="Cuisine">Cuisine:</label>
+
+                <select name="cars" id="cars">
+                    <option value="Mediterrean">Mediterrean</option>
+                    <option value="Thai">Thai</option>
+                    <option value="Korean">Korean</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="Vietnamese">Vietnamese</option>
+                    <option value="Indian">Indian</option>
+                    <option value="Boba">Boba</option>
+                </select>
+
+                <label for="Rating">Rating:</label>
+
+                <select name="cars" id="cars">
+                    <option value="1 star">&#9733;</option>
+                    <option value="2 stars">&#9733;&#9733;</option>
+                    <option value="3 stars">&#9733;&#9733;&#9733;</option>
+                    <option value="4 stars">&#9733;&#9733;&#9733;&#9733;</option>
+                    <option value="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+                </select>
+
             </div>
         </div>
     </header>

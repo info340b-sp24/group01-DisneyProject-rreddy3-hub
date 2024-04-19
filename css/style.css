@@ -27,6 +27,13 @@ body {
     height: 25%;
 }
 
+button {
+    margin-right: .5rem;
+    margin-bottom: .5rem;
+    display: flex;
+    align-items: right;
+}
+
 .card {
     background-color: #c7c9c8;
     margin-bottom: 2rem;
