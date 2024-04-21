@@ -22,7 +22,7 @@
 
 <body>
 
-  <a href="index.html"><span class="material-icons" aria-label="Home">home</span></a> 
+  <a href="index.html"><span class="material-icons" aria-label="Home">home</span></a>
 
   <header>
     <h1>Add Meal</h1>
@@ -44,6 +44,26 @@
           <input id="restaurant-input" class="form-control" type="text" name="mealrestaurant">
         </div>
 
+        <select class="form-select mb-3" aria-label="Select Cuisine">
+          <option selected>Cuisine:</option>
+          <option value="1">Mediterrean</option>
+          <option value="2">Thai</option>
+          <option value="3">Korean</option>
+          <option value="4">Mexican</option>
+          <option value="5">Vietnamese</option>
+          <option value="6">Indian</option>
+          <option value="7">Boba</option>
+        </select>
+
+        <select class="form-select mb-3" aria-label="Select Price">
+          <option selected>Price:</option>
+          <option value="1">$</option>
+          <option value="2">$$</option>
+          <option value="3">$$$</option>
+          <option value="4">$$$$</option>
+          <option value="5">$$$$$</option>
+        </select>
+
         <div class="input-group mb-3">
           <label for="address-input" class="input-group-text">Address:</label>
           <input id="address-input" class="form-control" type="text" name="mealaddress" placeholder="1234 Main St"
@@ -56,11 +76,11 @@
         <div class="input-group mb-3">
           <label for="rating-input" class="input-group-text">Rating:</label>
           <div class="stars mt-2" style="padding-left: 5px;">
-            <span class="fa fa-star checked"></span>   
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
             <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
+            <span class="fa fa-star checked"></span>
+            <span class="fa fa-star notchecked"></span>
           </div>
         </div>
 
@@ -83,11 +103,11 @@
     </section>
 
     <footer>
-      <p>&copy; Julie Noh, Kyra Diaz, Tina Song, & Rishita Reddy & INFO 340 Au 23</p> 
+      <p>&copy; Julie Noh, Kyra Diaz, Tina Song, & Rishita Reddy & INFO 340</p>
     </footer>
 
-  </main>                 
+  </main>
 
-</body>  
+</body>
 
-</html>   
+</html>

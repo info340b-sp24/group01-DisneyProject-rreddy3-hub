@@ -3,6 +3,10 @@
     color: orange;
 }
 
+.notchecked {
+    color: gray; 
+}
+
 .home-icon {
     margin-left: 2rem;
 }
