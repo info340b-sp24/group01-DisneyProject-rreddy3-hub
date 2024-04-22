@@ -2,7 +2,7 @@
 h1 {
     font-weight: bold;
     margin: 0.5rem;
-    display: inline-block;
+    display: inline-block; 
 }
 
 /* Add Meal Page rating */
@@ -191,30 +191,21 @@ footer {
 
 /* Default (xs screens) */
 
-@media (min-width: 576px) {
-
-    body {
-        background-image: url('../img/splash-lg.jpg'); 
-    } 
-
-    nav a {
-        font-size: 1.5rem; 
+@media (min-width: 576px) { 
+    
+    .laptop-nav {
+        display: none;
     }
-
-    h1 {
-        font-size: 5rem; 
-    }
-
-    h2 {
-        font-size: 3rem; 
-    }
-
 }
 
 @media (min-width: 992px) {
 
-    body {
-        background-image: url('../img/splash-xl.jpg'); 
+    .hamburger-menu {
+        display: none; 
+    }
+
+    .laptop-nav {
+        display: block; 
     }
 
 }
