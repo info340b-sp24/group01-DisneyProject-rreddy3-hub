@@ -1,3 +1,10 @@
+/* General Styling */
+h1 {
+    font-weight: bold;
+    margin: 0.5rem;
+    display: inline-block;
+}
+
 /* Add Meal Page rating */
 .checked {
     color: orange;
@@ -17,7 +24,7 @@ header {
 
 body {
     color: white;
-    font-family: Arial, sans-serif;
+    font-family: 'Open Sans', Arial, sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -43,7 +50,7 @@ button {
 }
 
 .card {
-    background-color: #c7c9c8;
+    background-color: #f5f3f2;;
     margin-bottom: 2rem;
 }
 
@@ -100,12 +107,12 @@ button:hover {
 .favorites-card {
     margin-bottom: 40px;
     margin-right: 20px;
-    background-color: #c7c9c8;
     color: black;
     flex: 0 1 calc(25% - 20px);
     display: inline-block; 
     vertical-align: top;
     padding: 20px;
+    background-color: #f5f3f2;
 }
 
 .img-card {
@@ -152,14 +159,14 @@ nav .btn {
     margin: 0.5rem;
 }
 
-.meal-body .stars {
+.stars {
     margin: 0.25rem;
     display: inline-block;
 }
 
-.meal-body .rating {
+.rating {
     display: inline-block;
-}s
+}
 
 .meal-body p {
     margin: 0.5rem;
@@ -177,19 +184,6 @@ nav .btn {
 .meal-body .add-review {
     margin: 0.5rem;
 }
-
-
-
-/* 
-This initial footer styling was making it so that the footer
-stuck to the bottom of the screen (and would overlap text) so
-we should brainstorm different styling for this 
-*/
-/* footer {
-    position: fixed; 
-    bottom: 0;
-    left: 0; 
-}  */
 
 /* Default (xs screens) */
 
