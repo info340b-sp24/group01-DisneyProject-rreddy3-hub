@@ -124,7 +124,7 @@ button:hover {
 
 /* Meal Page CSS */
 nav .btn {
-    background-color: #c7c9c8;
+    background-color: #f5f3f2;
 }
 
 .meal-body {
@@ -157,18 +157,26 @@ nav .btn {
     display: inline-block;
 }
 
-.meal-body .agg-rating {
+.meal-body .rating {
     display: inline-block;
-}
+}s
 
 .meal-body p {
     margin: 0.5rem;
 }
 
 .meal-body a {
-    margin: 0.5rem;
+    margin: 0.1rem;
 }
 
+.meal-body .card {
+    margin: 0.5rem;
+    background-color: #f5f3f2;
+}
+
+.meal-body .add-review {
+    margin: 0.5rem;
+}
 
 
 
