@@ -5,7 +5,18 @@ h1 {
     display: inline-block; 
 }
 
-/* Add Meal Page rating */
+header {
+    background-color: #59328a;
+}
+
+.header-text {
+    color: white;
+    margin: 0.5rem;
+}
+
+/* Main Header (with Search and Filters) */
+
+/* Add Meal Page */
 .checked {
     color: orange;
 }
@@ -18,19 +29,12 @@ h1 {
     margin-left: 2rem;
 }
 
-header {
-    background-color: #59328a;
-}
 
 body {
-    color: white;
+    color: black;
     font-family: 'Open Sans', Arial, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-.header-text {
-    margin-left: 2rem;
 }
 
 .column-container {
@@ -103,10 +107,10 @@ button:hover {
     color: #ffcc00; /* Yellow */
 }
 
+
 /* Favorites List CSS */
 .favorites-card {
-    margin-bottom: 40px;
-    margin-right: 20px;
+    margin: 0.5rem;
     color: black;
     flex: 0 1 calc(25% - 20px);
     display: inline-block; 
@@ -128,6 +132,7 @@ button:hover {
     height: 100%;
     object-fit: cover;
 }
+
 
 /* Meal Page CSS */
 nav .btn {
@@ -188,6 +193,10 @@ nav .btn {
 footer {
     color: black; 
 }
+
+/* Index */
+
+
 
 /* Default (xs screens) */
 
