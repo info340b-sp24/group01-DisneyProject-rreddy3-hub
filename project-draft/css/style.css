@@ -40,6 +40,7 @@ body {
 .column-container {
     display: flex;
     height: 50%;
+    flex-wrap: wrap;
 }
 
 .column-container img {

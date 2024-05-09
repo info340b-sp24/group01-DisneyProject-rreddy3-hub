@@ -26,12 +26,12 @@
     <nav>
         <div id="hamburger-menu">
             <a href="#"><i class="fa fa-bars" aria-label="menu"></i></a>
-        </div> 
+        </div>
         <div class="laptop-nav">
             <a href="index.html"><span class="material-icons" aria-label="Home">home</span></a>
             <button type="button" class="btn btn-light">
                 <a href="add-meal.html">Add Meal</a>
-            </button> 
+            </button>
         </div>
     </nav>
 
@@ -42,7 +42,6 @@
             <!-- Filters -->
             <div>
                 <label for="Price">Price:</label>
-
                 <select name="cars" id="cars">
                     <option value="$">$</option>
                     <option value="$$">$$</option>
@@ -51,7 +50,6 @@
                 </select>
 
                 <label for="Cuisine">Cuisine:</label>
-
                 <select name="cars" id="cars">
                     <option value="Mediterrean">Mediterrean</option>
                     <option value="Thai">Thai</option>
@@ -63,7 +61,6 @@
                 </select>
 
                 <label for="Rating">Rating:</label>
-
                 <select name="cars" id="cars">
                     <option value="1 star">&#9733;</option>
                     <option value="2 stars">&#9733;&#9733;</option>
@@ -71,113 +68,122 @@
                     <option value="4 stars">&#9733;&#9733;&#9733;&#9733;</option>
                     <option value="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
                 </select>
-
             </div>
         </div>
     </header>
 
-    <div class="column-container">
-        <main>
-            <!-- Card 1 -->
-            <div class="favorites-card">
-                <div class="img-card">
-                    <a href="meal-page.html"><img src="./img/alladins-fries.png" alt="Aladdins"
-                            class="card-img-top pb-3"></a>
-                </div>
-                <h4 class="favorite-title">Aladdin's Fries</h2>
-                    <p class="favorite-text">Amazing fries & perfect place to eat</p>
-                    <!-- Rating -->
-                    <div class="stars mt-2" style="padding-left: 5px;">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star"></span>
-                        <span class="fa fa-star"></span>
+    <main>
+        <div class="container">
+            <div class="row">
+
+
+                <!-- Card 1 -->
+                <div class="col-md-4">
+                    <div class="card mb-3" style="width:15rem">
+                        <a href="meal-page.html"><img src="./img/alladins-fries.png" alt="Aladdins"
+                                class="card-img-top pb-3"></a>
+                        <div class="card-body">
+                            <h5 class="favorite-title">Aladdin's Fries</h5>
+                            <p class="favorite-text">Amazing fries & perfect place to eat</p>
+                            <!-- Rating -->
+                            <div class="stars mt-2" style="padding-left: 5px;">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>
+                            </div>
+                            <p class="rating">3.75 / 5 stars</p>
+                            <p class="price">$</p>
+                            <p class="cuisine">Cuisine: Mediterranean</p>
+                            <button type="button" class="btn btn-light">
+                                <a href="favorites-list.html">Remove</a>
+                            </button>
+                        </div>
                     </div>
-                    <p class="rating">3.75 / 5 stars</p>
-                    <p class="price">$</p>
-                    <p class="cuisine">Cuisine: Mediterranean</p>
-                    <button type="button" class="btn btn-light">
-                        <a href="favorites-list.html">Remove</a>
-                    </button>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="favorites-card">
-                <div class="img-card">
-                    <img src="./img/pho-shizzle.png" alt="Pho Shizzle" class="card-img-top pb-3">
                 </div>
-                <h4 class="favorite-title">Pho at Pho Shizzle</h2>
-                    <p class="favorite-text">The pho here is so good!</p>
-                    <!-- Rating -->
-                    <div class="stars mt-2" style="padding-left: 5px;">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <p class="rating">5 / 5 stars</p>
-                    <p class="price">$</p>
-                    <p class="cuisine">Cuisine: Vietnamese</p>
-                    <button type="button" class="btn btn-light">
-                        <a href="favorites-list.html">Remove</a>
-                    </button>
-            </div>
 
-            <!-- Card 3 -->
-            <div class="favorites-card">
-                <div class="img-card">
-                    <img src="./img/sizzle-and-crunch.png" alt="Sizzle and Crunch" class="card-img-top pb-3">
+                <!-- Card 2 -->
+                <div class="col-md-4">
+                    <div class="card mb-3" style="width:15rem">
+                        <img src="./img/pho-shizzle.png" alt="Pho Shizzle" class="card-img-top pb-3">
+                        <div class="card-body">
+                            <h5 class="favorite-title">Pho at Pho Shizzle</h5>
+                            <p class="favorite-text">The pho here is so good!</p>
+                            <!-- Rating -->
+                            <div class="stars mt-2" style="padding-left: 5px;">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                            </div>
+                            <p class="rating">5 / 5 stars</p>
+                            <p class="price">$</p>
+                            <p class="cuisine">Cuisine: Vietnamese</p>
+                            <button type="button" class="btn btn-light">
+                                <a href="favorites-list.html">Remove</a>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <h4 class="favorite-title">Sizzle and Crunch Bowl</h2>
-                    <p class="favorite-text">Good portions for good prices!</p>
-                    <!-- Rating -->
-                    <div class="stars mt-2" style="padding-left: 5px;">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                    </div>
-                    <p class="rating">5 / 5 stars</p>
-                    <p class="price">$</p>
-                    <p class="cuisine">Cuisine: Vietnamese</p>
-                    <button type="button" class="btn btn-light">
-                        <a href="favorites-list.html">Remove</a>
-                    </button>
-            </div>
 
-            <!-- Card 4 -->
-            <div class="favorites-card">
-                <div class="img-card">
-                    <img src="./img/dont-yell-at-me.png" alt="Don't Yell at Me" class="card-img-top pb-3">
+                <!-- Card 3 -->
+                <div class="col-md-4">
+                    <div class="card mb-3" style="width:15rem">
+                        <img src="./img/sizzle-and-crunch.png" alt="Sizzle and Crunch" class="card-img-top pb-3">
+                        <div class="card-body">
+                            <h5 class="favorite-title">Sizzle and Crunch Bowl</h5>
+                            <p class="favorite-text">Good portions for good prices!</p>
+                            <!-- Rating -->
+                            <div class="stars mt-2" style="padding-left: 5px;">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                            </div>
+                            <p class="rating">5 / 5 stars</p>
+                            <p class="price">$</p>
+                            <p class="cuisine">Cuisine: Vietnamese</p>
+                            <button type="button" class="btn btn-light">
+                                <a href="favorites-list.html">Remove</a>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-                <h4 class="favorite-title">Boba at Don't Yell at Me</h2>
-                    <p class="favorite-text">Best boba on the Ave!!</p>
-                    <!-- Rating -->
-                    <div class="stars mt-2" style="padding-left: 5px;">
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
-                        <span class="fa fa-star checked"></span>
+
+                <!-- Card 4 -->
+                <div class="col-md-4">
+                    <div class="card mb-3" style="width:15rem">
+                        <img src="./img/dont-yell-at-me.png" alt="Don't Yell at Me" class="card-img-top pb-3">
+                        <div class="card-body">
+                            <h5 class="favorite-title">Boba at Don't Yell at Me</h5>
+                            <p class="favorite-text">Best boba on the Ave!!</p>
+                            <!-- Rating -->
+                            <div class="stars mt-2" style="padding-left: 5px;">
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                            </div>
+                            <p class="rating">5 / 5 stars</p>
+                            <p class="price">$$</p>
+                            <p class="cuisine">Cuisine: Boba</p>
+                            <button type="button" class="btn btn-light">
+                                <a href="favorites-list.html">Remove</a>
+                            </button>
+                        </div>
                     </div>
-                    <p class="rating">5 / 5 stars</p>
-                    <p class="price">$$</p>
-                    <p class="cuisine">Cuisine: Boba</p>
-                    <button type="button" class="btn btn-light">
-                        <a href="favorites-list.html">Remove</a>
-                    </button>
+                </div>
             </div>
-
-        </main>
-    </div>
-
+        </div>
+        </div>
+    </main>
     <footer>
         <p>&copy; Julie Noh, Kyra Diaz, Tina Song, & Rishita Reddy & INFO 340</p>
     </footer>
-
 </body>
 
 </html>
