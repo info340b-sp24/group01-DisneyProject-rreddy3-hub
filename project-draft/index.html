@@ -29,10 +29,10 @@
             <a href="#"><i class="fa fa-bars" aria-label="menu"></i></a>
         </div>
         <div class="laptop-nav">
-            <button type="button" class="btn">
+            <button type="button" class="btn" aria-labelledby="favorites list">
                 <a href="favorites-list.html">Favorites &#x2665;</a>
             </button>
-            <button type="button" class="btn btn-light">
+            <button type="button" class="btn btn-light" aria-labelledby="add meal form">
                 <a href="add-meal.html">Add Meal</a>
             </button>
         </div>
@@ -45,7 +45,8 @@
             <div>
                 <label for="Price">Price:</label>
 
-                <select name="cars" id="cars">
+                <select name="cars" id="cars" aria-label="price filter selection">
+                    <option value="None">Select price...</option>
                     <option value="$">$</option>
                     <option value="$$">$$</option>
                     <option value="$$$">$$$</option>
@@ -54,7 +55,8 @@
 
                 <label for="Cuisine">Cuisine:</label>
 
-                <select name="cars" id="cars">
+                <select name="cars" id="cars" aria-label="cuisine filter selection">
+                    <option value="None">Select cuisine...</option>
                     <option value="Mediterrean">Mediterrean</option>
                     <option value="American">American</option>
                     <option value="Hawaiian">Hawaiian</option>
@@ -68,7 +70,8 @@
 
                 <label for="Rating">Rating:</label>
 
-                <select name="cars" id="cars">
+                <select name="cars" id="cars" aria-label="rating filter selection">
+                    <option value="None">Select rating...</option>
                     <option value="1 star">&#9733;</option>
                     <option value="2 stars">&#9733;&#9733;</option>
                     <option value="3 stars">&#9733;&#9733;&#9733;</option>
@@ -188,7 +191,7 @@
                 <!-- Card 5 -->
                 <div class="col-md-4">
                     <div class="card mb-3" style="width:15rem">
-                        <img src="img/alladins-fries.png" class="card-img-top" alt="Greek Fries from Aladdin's">
+                        <a href="meal-page.html"><img src="img/alladins-fries.png" class="card-img-top" alt="Greek Fries from Aladdin's"></a>
                         <div class="card-body">
                             <h5 class="card-title">Greek Fries, Aladdin's</h5>
                             <div class="stars">

@@ -29,7 +29,7 @@
         </div>
         <div class="laptop-nav">
             <a href="index.html"><span class="material-icons" aria-label="Home">home</span></a>
-            <button type="button" class="btn btn-light">
+            <button type="button" class="btn btn-light" aria-labelledby="add meal form">
                 <a href="add-meal.html">Add Meal</a>
             </button>
         </div>
@@ -42,7 +42,8 @@
             <!-- Filters -->
             <div>
                 <label for="Price">Price:</label>
-                <select name="cars" id="cars">
+                <select name="cars" id="cars" aria-label="price filter selection">
+                    <option value="None">Select price...</option>
                     <option value="$">$</option>
                     <option value="$$">$$</option>
                     <option value="$$$">$$$</option>
@@ -50,7 +51,8 @@
                 </select>
 
                 <label for="Cuisine">Cuisine:</label>
-                <select name="cars" id="cars">
+                <select name="cars" id="cars" aria-label="cuisine filter selection">
+                    <option value="None">Select cuisine...</option>
                     <option value="Mediterrean">Mediterrean</option>
                     <option value="Thai">Thai</option>
                     <option value="Korean">Korean</option>
@@ -61,7 +63,8 @@
                 </select>
 
                 <label for="Rating">Rating:</label>
-                <select name="cars" id="cars">
+                <select name="cars" id="cars" aria-label="rating filter selection">
+                    <option value="None">Select rating...</option>
                     <option value="1 star">&#9733;</option>
                     <option value="2 stars">&#9733;&#9733;</option>
                     <option value="3 stars">&#9733;&#9733;&#9733;</option>
