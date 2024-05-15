@@ -213,7 +213,7 @@ footer {
     }
 }
 
-@media (max-width: 992px) {
+@media (min-width: 992px) {
     .laptop-nav {
         display: none; 
     }
@@ -223,7 +223,6 @@ footer {
         padding-top: 5px; 
         padding-left: 12px;  
     }  
-    
 }
 
 
