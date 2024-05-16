@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'font-awesome/css/font-awesome.min.css';
-import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+// import 'font-awesome/css/font-awesome.min.css';
+// import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
 export function HomePage() {
     const [search, setSearch] = useState('');
@@ -63,7 +63,7 @@ export function HomePage() {
             restaurant: "Hiroshi's",
             image: "img/hiroshis.png",
             rating: 4.75,
-            price: "$",
+            price: "$$",
             cuisine: "Hawaiian"
         },
         {
@@ -71,7 +71,7 @@ export function HomePage() {
             restaurant: "Sweet Alchemy",
             image: "img/sweet-alchemy.jpg",
             rating: 4.75,
-            price: "$",
+            price: "$$",
             cuisine: "Dessert"
         },
         {
@@ -79,7 +79,7 @@ export function HomePage() {
             restaurant: "Chi Mac",
             image: "img/chi-mac.jpg",
             rating: 4.75,
-            price: "$",
+            price: "$$$",
             cuisine: "Korean"
         },
         {
@@ -87,7 +87,7 @@ export function HomePage() {
             restaurant: "Agua Verde",
             image: "img/agua-verde.jpg",
             rating: 4.75,
-            price: "$",
+            price: "$$$$",
             cuisine: "Mexican"
         },
         {
@@ -95,7 +95,7 @@ export function HomePage() {
             restaurant: "Xi'an Noodles",
             image: "img/xian-noodles.jpg",
             rating: 4.75,
-            price: "$",
+            price: "$$",
             cuisine: "Chinese"
         },
         {
@@ -203,6 +203,7 @@ export function HomePage() {
                                     <img src={meal.image} className="card-img-top" alt={`${meal.name} from ${meal.restaurant}`} />
                                     <div className="card-body">
                                         <h5 className="card-title">{meal.name}, {meal.restaurant}</h5>
+                                        <p className="reviews-link">See reviews</p>
                                         <div className="stars">
                                             {[...Array(Math.floor(meal.rating))].map((_, i) => (
                                                 <span key={i} className="fa fa-star checked"></span>

@@ -1,26 +1,26 @@
 import React from 'react';
-import './style.css';
+// import './style.css';
 
 export function FavoritesList(props) {
     return (
         <div>
             <nav>
                 <div id="hamburger-menu">
-                    <a href="#"><i class="fa fa-bars" aria-label="menu"></i></a>
+                    <a href="#"><i className="fa fa-bars" aria-label="menu"></i></a>
                 </div>
-                <div class="laptop-nav">
-                    <a href="index.html"><span class="material-icons" aria-label="Home">home</span></a>
-                    <button type="button" class="btn btn-light" aria-labelledby="add meal form">
+                <div className="laptop-nav">
+                    <a href="index.html"><span className="material-icons" aria-label="Home">home</span></a>
+                    <button type="button" className="btn btn-light" aria-labelledby="add meal form">
                         <a href="add-meal.html">Add Meal</a>
                     </button>
                 </div>
             </nav>
             <header>
-                <div class="header-text">
+                <div className="header-text">
                     <h1>UW Crave</h1>
                     <input type="text" placeholder="Search..." />
                     <div>
-                        <label for="Price">Price:</label>
+                        <label htmlFor="Price">Price:</label>
                         <select name="cars" id="cars" aria-label="price filter selection">
                             <option value="None">Select price...</option>
                             <option value="$">$</option>
@@ -29,7 +29,7 @@ export function FavoritesList(props) {
                             <option value="$$$$">$$$$</option>
                         </select>
 
-                        <label for="Cuisine">Cuisine:</label>
+                        <label htmlFor="Cuisine">Cuisine:</label>
                         <select name="cars" id="cars" aria-label="cuisine filter selection">
                             <option value="None">Select cuisine...</option>
                             <option value="Mediterranean">Mediterranean</option>
@@ -41,7 +41,7 @@ export function FavoritesList(props) {
                             <option value="Boba">Boba</option>
                         </select>
 
-                        <label for="Rating">Rating:</label>
+                        <label htmlFor="Rating">Rating:</label>
                         <select name="cars" id="cars" aria-label="rating filter selection">
                             <option value="None">Select rating...</option>
                             <option value="1 star">&#9733;</option>
@@ -56,10 +56,10 @@ export function FavoritesList(props) {
             <main>
                 <div className="container">
                     <div className="row">
-                        <Card image="./img/alladins-fries.png" title="Aladdin's Fries, Aladdin's" rating="3.75 / 5 stars" price="$" cuisine="Mediterranean" />
-                        <Card image="./img/pho-shizzle.png" title="Beef Pho, Pho Shizzle" rating="5 / 5 stars" price="$" cuisine="Vietnamese" />
-                        <Card image="./img/sizzle-and-crunch.png" title="Banh Mi Bowl, Sizzle and Crunch" rating="5 / 5 stars" price="$" cuisine="Vietnamese" />
-                        <Card image="./img/dont-yell-at-me.png" title="Traditional Milk Tea, Don't Yell At Me" rating="5 / 5 stars" price="$$" cuisine="Boba" />
+                        <MealCard image="./img/alladins-fries.png" title="Aladdin's Fries, Aladdin's" rating="3.75 / 5 stars" price="$" cuisine="Mediterranean" />
+                        <MealCard image="./img/pho-shizzle.png" title="Beef Pho, Pho Shizzle" rating="5 / 5 stars" price="$" cuisine="Vietnamese" />
+                        <MealCard image="./img/sizzle-and-crunch.png" title="Banh Mi Bowl, Sizzle and Crunch" rating="5 / 5 stars" price="$" cuisine="Vietnamese" />
+                        <MealCard image="./img/dont-yell-at-me.png" title="Traditional Milk Tea, Don't Yell At Me" rating="5 / 5 stars" price="$$" cuisine="Boba" />
                     </div>
                 </div>
             </main>
@@ -70,7 +70,7 @@ export function FavoritesList(props) {
     );
 }
 
-function mealCard ({ image, title, rating, price, cuisine }) {
+function MealCard ({ image, title, rating, price, cuisine }) {
     return (
         <div className="col-md-4">
             <div className="card mb-3" style={{ width: '15rem' }}>

@@ -114,39 +114,7 @@ function StarRatings({rating}) {
 
 function InitialReview( {InitialReviewData} ) {
     return(
-        <main>
-            {/* Responsive Bootstrap Way */}
-            {/* <div className="card mb-3"> */}
-                {/* <div className="row no-gutters"> */}
-                    {/* <div className="col-12 col-md-8"> */}
-                        {/* <div className="card-body"> */}
-                            {/* <div className="col-12 col-md-4">
-                                <img id="meal-img" className="card-img img-fluid" src="img/alladins-fries.png" alt="Aladdin Fries" />
-                            </div> */}
-
-                            {/* <h5 className="card-title">Review by: notkyraxo</h5> */}
-                            {/* <!-- Rating --> */}
-                            {/* <div className="stars mt-2" style={{paddingLeft: "5px"}}>
-                                <span className="fa fa-star checked"></span>   
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                            </div>
-                            <p className="card-text">5 / 5 stars</p>
-                            <p className="card-text"> */}
-                            {/* One of the best fries in the U-District! The staff is really
-                            friendly and they're always open late, which is a plus. The mix 
-                            of beef and lamb is really superior. Plus it's pretty affordable! */}
-                            {/* </p> */}
-                        {/* </div> */}
-                     {/* </div> */}
-                 {/* </div> */}
-             {/* </div> */}
-            {/* end */}
-            
-          
-            
+        <main>          
             <div className="card">
                 {/* <!-- Image of Meal --> */}
                 <img id="meal-img" className="card-img-top" src="img/alladins-fries.png" alt="Aladdin Fries"></img>
