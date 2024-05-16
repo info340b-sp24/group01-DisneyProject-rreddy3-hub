@@ -5,10 +5,10 @@ import { AddMeal } from './AddMeal.js';
 export function App(props) {
     return (
       <div>
-        {/* <HomePage /> */}
+        <HomePage />
         {/* <MealPage />  */}
         {/* <FavoritesList /> */}
-         <AddMeal />
+        {/* <AddMeal />  */}
       </div>
     )
   }

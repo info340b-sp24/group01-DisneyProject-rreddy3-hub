@@ -26,7 +26,86 @@ export function HomePage() {
             price: "$",
             cuisine: "Boba"
         },
-        // Add other meal objects here
+        {
+            name: "Paneer Burger",
+            restaurant: "Burger Hut",
+            image: "img/burger-hut.png",
+            rating: 4,
+            price: "$",
+            cuisine: "Indian, American"
+        },
+        {
+            name: "Beef Pho",
+            restaurant: "Pho Shizzle",
+            image: "img/pho-shizzle.png",
+            rating: 4.75,
+            price: "$",
+            cuisine: "Vietnamese"
+        },
+        {
+            name: "Alladin's Fries",
+            restaurant: "Alladins",
+            image: "img/alladins-fries.png",
+            rating: 4.75,
+            price: "$",
+            cuisine: "Mediterranean"
+        },
+        {
+            name: "Black Milk Tea",
+            restaurant: "TP Tea",
+            image: "img/tp-tea.jpg",
+            rating: 4.75,
+            price: "$",
+            cuisine: "Boba"
+        },
+        {
+            name: "Salmon and Ahi Poke Bowl",
+            restaurant: "Hiroshi's",
+            image: "img/hiroshis.png",
+            rating: 4.75,
+            price: "$",
+            cuisine: "Hawaiian"
+        },
+        {
+            name: "Chocolate and Vanilla Ice Cream Combo",
+            restaurant: "Sweet Alchemy",
+            image: "img/sweet-alchemy.jpg",
+            rating: 4.75,
+            price: "$",
+            cuisine: "Dessert"
+        },
+        {
+            name: "Chicken Rice Bowl and Kimchi Mac Salad Combo",
+            restaurant: "Chi Mac",
+            image: "img/chi-mac.jpg",
+            rating: 4.75,
+            price: "$",
+            cuisine: "Korean"
+        },
+        {
+            name: "Pollo Burrito",
+            restaurant: "Agua Verde",
+            image: "img/agua-verde.jpg",
+            rating: 4.75,
+            price: "$",
+            cuisine: "Mexican"
+        },
+        {
+            name: "Cumin Lamb Biang Noodles",
+            restaurant: "Xi'an Noodles",
+            image: "img/xian-noodles.jpg",
+            rating: 4.75,
+            price: "$",
+            cuisine: "Chinese"
+        },
+        {
+            name: "Banh Mi Bowl",
+            restaurant: "Sizzle and Crunch",
+            image: "img/sizzle-and-crunch.png",
+            rating: 4.75,
+            price: "$",
+            cuisine: "Vietnamese"
+        }
     ];
 
     const filterMeals = () => {
