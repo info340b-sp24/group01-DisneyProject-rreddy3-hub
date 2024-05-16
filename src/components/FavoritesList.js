@@ -1,7 +1,7 @@
 import React from 'react';
 import './style.css';
 
-function FavoritesList(props) {
+export function FavoritesList(props) {
     return (
         <div>
             <nav>
@@ -96,5 +96,3 @@ function mealCard ({ image, title, rating, price, cuisine }) {
         </div>
     );
 }
-
-export default FavoritesList;
