@@ -39,15 +39,15 @@ export function HomePage() {
             name: "Beef Pho",
             restaurant: "Pho Shizzle",
             image: "img/pho-shizzle.png",
-            rating: 4.75,
+            rating: 4,
             price: "$",
             cuisine: "Vietnamese"
         },
         {
-            name: "Alladin's Fries",
-            restaurant: "Alladins",
+            name: "Aladdin's Fries",
+            restaurant: "Aladdins",
             image: "img/alladins-fries.png",
-            rating: 4.75,
+            rating: 4.25,
             price: "$",
             cuisine: "Mediterranean"
         },
@@ -55,7 +55,7 @@ export function HomePage() {
             name: "Black Milk Tea",
             restaurant: "TP Tea",
             image: "img/tp-tea.jpg",
-            rating: 4.75,
+            rating: 4,
             price: "$",
             cuisine: "Boba"
         },
@@ -63,7 +63,7 @@ export function HomePage() {
             name: "Salmon and Ahi Poke Bowl",
             restaurant: "Hiroshi's",
             image: "img/hiroshis.png",
-            rating: 4.75,
+            rating: 5,
             price: "$$",
             cuisine: "Hawaiian"
         },
@@ -71,7 +71,7 @@ export function HomePage() {
             name: "Chocolate and Vanilla Ice Cream Combo",
             restaurant: "Sweet Alchemy",
             image: "img/sweet-alchemy.jpg",
-            rating: 4.75,
+            rating: 5,
             price: "$$",
             cuisine: "Dessert"
         },
@@ -79,7 +79,7 @@ export function HomePage() {
             name: "Chicken Rice Bowl and Kimchi Mac Salad Combo",
             restaurant: "Chi Mac",
             image: "img/chi-mac.jpg",
-            rating: 4.75,
+            rating: 3,
             price: "$$$",
             cuisine: "Korean"
         },
@@ -87,7 +87,7 @@ export function HomePage() {
             name: "Pollo Burrito",
             restaurant: "Agua Verde",
             image: "img/agua-verde.jpg",
-            rating: 4.75,
+            rating: 4,
             price: "$$$$",
             cuisine: "Mexican"
         },
@@ -95,7 +95,7 @@ export function HomePage() {
             name: "Cumin Lamb Biang Noodles",
             restaurant: "Xi'an Noodles",
             image: "img/xian-noodles.jpg",
-            rating: 4.75,
+            rating: 5,
             price: "$$",
             cuisine: "Chinese"
         },
@@ -103,7 +103,7 @@ export function HomePage() {
             name: "Banh Mi Bowl",
             restaurant: "Sizzle and Crunch",
             image: "img/sizzle-and-crunch.png",
-            rating: 4.75,
+            rating: 5,
             price: "$",
             cuisine: "Vietnamese"
         }
