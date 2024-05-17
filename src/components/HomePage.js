@@ -8,6 +8,7 @@ export function HomePage() {
     const [priceFilter, setPriceFilter] = useState('None');
     const [cuisineFilter, setCuisineFilter] = useState('None');
     const [ratingFilter, setRatingFilter] = useState('None');
+    const [likedMeals, setLikedMeals] = useState(Array(12).fill(false));
 
     const meals = [
         {
@@ -118,6 +119,12 @@ export function HomePage() {
         });
     };
 
+    const handleClick = (index) => {
+        const newLikedMeals = [...likedMeals];
+        newLikedMeals[index] = !newLikedMeals[index];
+        setLikedMeals(newLikedMeals);
+    };
+
     return (
         <div>
             <nav>
@@ -136,10 +143,10 @@ export function HomePage() {
             <header>
                 <div className="header-text">
                     <h1>UW Crave</h1>
-                    <input 
-                        type="text" 
-                        placeholder="Search..." 
-                        value={search} 
+                    <input
+                        type="text"
+                        placeholder="Search..."
+                        value={search}
                         onChange={e => setSearch(e.target.value)}
                     />
                     <div>
@@ -216,8 +223,8 @@ export function HomePage() {
                                         <p className="card-text rating">{meal.rating} / 5 stars</p>
                                         <p className="card-text">{meal.price}</p>
                                         <p className="card-text">Cuisine: {meal.cuisine}</p>
-                                        <button className="favorite btn btn-light">
-                                            <span className="material-icons">heart_plus</span>
+                                        <button className="btn like-button" onClick={() => handleClick(index)}>
+                                            <span className="material-icons" style={{ color: likedMeals[index] ? 'red' : 'grey' }}>favorite_border</span>
                                         </button>
                                     </div>
                                 </div>
