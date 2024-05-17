@@ -115,20 +115,6 @@ footer {
     color: black; 
 }
 
-/* Index */
-nav {
-    background-color: #f5f5f5;
-    padding: 10px 20px;
-}
-
-.laptop-nav {
-    display: flex;
-}
-
-.laptop-nav button {
-    margin-right: 10px;
-}
-
 /* Default (xs screens) */
 
 @media (min-width: 576px) { 
