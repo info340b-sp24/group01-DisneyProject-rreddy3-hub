@@ -8,9 +8,9 @@ export function App(props) {
     return (
       <div>
         <HomePage />
-        {/* <MealPage />*/}
-        {/* <FavoritesList />*/}
-        {/* <AddMeal />*/}
+        {/* <MealPage /> */}
+        {/* <FavoritesList /> */}
+        {/* <AddMeal /> */}
       </div>
     )
   }
