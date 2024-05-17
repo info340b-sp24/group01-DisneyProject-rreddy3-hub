@@ -132,10 +132,10 @@ export function HomePage() {
                     <a href="#"><i className="fa fa-bars" aria-label="menu"></i></a>
                 </div>
                 <div className="laptop-nav">
-                    <button type="button" className="btn" aria-labelledby="favorites list">
+                    <button type="button" class="btn btn-light custom-color" aria-labelledby="favorites list">
                         <a href="favorites-list.html">Favorites &#x2665;</a>
                     </button>
-                    <button type="button" className="btn btn-light" aria-labelledby="add meal form">
+                    <button type="button" class="btn btn-light custom-color" aria-labelledby="add meal form">
                         <a href="add-meal.html">Add Meal</a>
                     </button>
                 </div>
@@ -209,7 +209,7 @@ export function HomePage() {
                                 <div className="card mb-3" style={{ width: "15rem" }}>
                                     <img src={meal.image} className="card-img-top" alt={`${meal.name} from ${meal.restaurant}`} />
                                     <div className="card-body">
-                                        <h5 className="card-title">{meal.name}, {meal.restaurant}</h5>
+                                        <h2 className="card-title">{meal.name}, {meal.restaurant}</h2>
                                         <p className="reviews-link">See reviews</p>
                                         <div className="stars">
                                             {[...Array(Math.floor(meal.rating))].map((_, i) => (

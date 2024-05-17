@@ -10,7 +10,7 @@ export function FavoritesList(props) {
                 </div>
                 <div className="laptop-nav">
                     <a href="index.html"><span className="material-icons" aria-label="Home">home</span></a>
-                    <button type="button" className="btn btn-light" aria-labelledby="add meal form">
+                    <button type="button" class="btn btn-light custom-color" aria-labelledby="add meal form">
                         <a href="add-meal.html">Add Meal</a>
                     </button>
                 </div>

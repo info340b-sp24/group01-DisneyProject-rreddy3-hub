@@ -55,6 +55,14 @@ button {
     padding: 20px;
 }
 
+.btn.custom-color {
+    color: blue;
+}
+.btn.custom-color a {
+    color: inherit;
+    text-decoration: none;
+}
+
 /* Meal Page CSS */
 nav .btn {
     background-color: #f5f3f2;
