@@ -8,7 +8,7 @@ export function AddMeal() {
                 <div id="hamburger-menu"><a href="#"><i className="fa fa-bars" aria-label="menu"></i></a></div>
                 <div className="laptop-nav">
                     <a href="index.html"><span className="material-icons" aria-label="Home">home</span></a>
-                    <button type="button" className="btn" aria-labelledby="favorites list">
+                    <button type="button" class="btn btn-light custom-color" aria-labelledby="favorites list">
                         <a href="favorites-list.html">Favorites &#x2665;</a>
                     </button>
                 </div>
