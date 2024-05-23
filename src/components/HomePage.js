@@ -127,19 +127,6 @@ export function HomePage() {
 
     return (
         <div>
-            <nav>
-                <div id="hamburger-menu">
-                    <a href="#"><i className="fa fa-bars" aria-label="menu"></i></a>
-                </div>
-                <div className="laptop-nav">
-                    <button type="button" class="btn btn-light custom-color" aria-labelledby="favorites list">
-                        <a href="favorites-list.html">Favorites &#x2665;</a>
-                    </button>
-                    <button type="button" class="btn btn-light custom-color" aria-labelledby="add meal form">
-                        <a href="add-meal.html">Add Meal</a>
-                    </button>
-                </div>
-            </nav>
             <header>
                 <div className="header-text">
                     <h1>UW Crave</h1>
@@ -210,7 +197,7 @@ export function HomePage() {
                                     <img src={meal.image} className="card-img-top" alt={`${meal.name} from ${meal.restaurant}`} />
                                     <div className="card-body">
                                         <h2 className="card-title">{meal.name}, {meal.restaurant}</h2>
-                                        <p className="reviews-link">See reviews</p>
+                                        <button className="reviews-link btn">See reviews</button>
                                         <div className="stars">
                                             {[...Array(Math.floor(meal.rating))].map((_, i) => (
                                                 <span key={i} className="fa fa-star checked"></span>
@@ -233,9 +220,6 @@ export function HomePage() {
                     </div>
                 </div>
             </main>
-            <footer>
-                <p>&copy; Julie Noh, Kyra Diaz, Tina Song, & Rishita Reddy & INFO 340</p>
-            </footer>
         </div>
     );
 }

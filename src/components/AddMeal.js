@@ -4,16 +4,6 @@ export function AddMeal() {
 
     return (
         <div>
-            <nav>
-                <div id="hamburger-menu"><a href="#"><i className="fa fa-bars" aria-label="menu"></i></a></div>
-                <div className="laptop-nav">
-                    <a href="index.html"><span className="material-icons" aria-label="Home">home</span></a>
-                    <button type="button" class="btn btn-light custom-color" aria-labelledby="favorites list">
-                        <a href="favorites-list.html">Favorites &#x2665;</a>
-                    </button>
-                </div>
-            </nav>
-
             <header>
                 <div className="header-text">
                     <h1>Add Meal</h1>
@@ -95,11 +85,6 @@ export function AddMeal() {
 
                     </form>
                 </section>
-
-                <footer>
-                    <p>&copy; Julie Noh, Kyra Diaz, Tina Song, & Rishita Reddy & INFO 340</p>
-                </footer>
-
             </main>
         </div>
     ) 

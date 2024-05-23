@@ -14,7 +14,16 @@ header {
     margin: 0.5rem;
 }
 
-/* Main Header (with Search and Filters) */
+/* Home Page */
+.container .reviews-link {
+    display: inline-block;
+    background-color:#59328a;
+    color:#f5f3f2;
+}
+
+.container .stars {
+    display: block;
+}
 
 /* Add Meal Page */
 .checked {

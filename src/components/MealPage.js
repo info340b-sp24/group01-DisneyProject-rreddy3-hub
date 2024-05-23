@@ -4,9 +4,6 @@ import React, { useState } from 'react';
 export function MealPage(props) {
     return(
         <div className="meal-body">
-            {/* Navigation Bar */}
-            <NavigationBar />
-
             {/* <!-- Description (Name, Rating, Heart, Restaurant, Location, Price) --> */}
             <MealDescription InitialReviewData={firstAladdinsReview} AvgRating={3.75}/>
 
@@ -18,10 +15,6 @@ export function MealPage(props) {
         
             {/* <!-- Previous Reviews --> */}
             <OtherReviews Reviews={otherReviews}/>
-
-            <footer>
-                <p>&copy; Julie Noh, Kyra Diaz, Tina Song, & Rishita Reddy & INFO 340</p> 
-            </footer>
         </div>
     );
 }
@@ -64,24 +57,24 @@ const otherReviews = [
     }
 ];
 
-function NavigationBar() {
-    return(
-        <nav>
-            <div id="hamburger-menu">
-                <a href="#"><i className="fa fa-bars" aria-label="menu"></i></a>
-            </div>
-            <div className="laptop-nav">
-                <a href="index.html"><span className="material-icons" aria-label="Home">home</span></a> 
-                <button type="button" class="btn btn-light custom-color" aria-labelledby="favorites list">
-                    <a href="favorites-list.html">Favorites &#x2665;</a>
-                </button>
-                <button type="button" class="btn btn-light custom-color" aria-labelledby="add meal form">
-                    <a href="add-meal.html">Add Meal</a>
-                </button>
-            </div>
-        </nav>
-    );
-}
+// function NavigationBar() {
+//     return(
+//         <nav>
+//             <div id="hamburger-menu">
+//                 <a href="#"><i className="fa fa-bars" aria-label="menu"></i></a>
+//             </div>
+//             <div className="laptop-nav">
+//                 <a href="index.html"><span className="material-icons" aria-label="Home">home</span></a> 
+//                 <button type="button" class="btn btn-light custom-color" aria-labelledby="favorites list">
+//                     <a href="favorites-list.html">Favorites &#x2665;</a>
+//                 </button>
+//                 <button type="button" class="btn btn-light custom-color" aria-labelledby="add meal form">
+//                     <a href="add-meal.html">Add Meal</a>
+//                 </button>
+//             </div>
+//         </nav>
+//     );
+// }
 
 // Generates meal description header; will expect a prop called InitialReviewData
 function MealDescription({ InitialReviewData, AvgRating }) {
