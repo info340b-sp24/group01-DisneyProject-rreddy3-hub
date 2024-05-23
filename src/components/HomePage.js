@@ -23,7 +23,7 @@ export function HomePage() {
             name: "Traditional Milk Tea",
             restaurant: "Don't Yell At Me",
             image: "img/dont-yell-at-me.png",
-            rating: 4.75,
+            rating: 4,
             price: "$",
             cuisine: "Boba"
         },
