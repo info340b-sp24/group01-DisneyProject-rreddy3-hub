@@ -26,6 +26,7 @@ export function App(props) {
 
         {/* Routes */}
         <Routes>
+          <Route index element={<HomePage />}/>
           <Route path="home" element={<HomePage />}/>
           {/* Change meal page to be dynamic */}
           {/* <Route path="mealPage/:mealID" element={<MealPage />}/> */}
@@ -33,6 +34,9 @@ export function App(props) {
           <Route path="addMeal" element={<AddMeal />}/>
           <Route path="favorites" element={<FavoritesList />}/>
         </Routes>
+
+        {/* Chipotle Meal Page */}
+        {/* <MealPage /> */}
         
         {/* Footer */}
         <footer>
