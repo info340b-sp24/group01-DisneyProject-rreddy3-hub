@@ -9,7 +9,7 @@ export function AddMeal() {
                     <h1>Add Meal</h1>
                     <p>Show others what it's like there now</p>
                 </div>
-            </header> 
+            </header>
 
             <main>
 
@@ -27,6 +27,7 @@ export function AddMeal() {
                         </div>
 
                         <select className="form-select mb-3" aria-label="Select Cuisine">
+                            <option selected>Cuisine:</option>
                             <option value="Mediterranean">Mediterranean</option>
                             <option value="American">American</option>
                             <option value="Hawaiian">Hawaiian</option>
@@ -47,25 +48,39 @@ export function AddMeal() {
                             <option value="5">$$$$$</option>
                         </select>
 
-                        <div className="input-group mb-3">
+                        {/* <div className="input-group mb-3">
                             <label htmlFor="address-input" className="input-group-text">Address:</label>
                             <input id="address-input" className="form-control" type="text" name="mealaddress" placeholder="1234 Main St"
                                 aria-describedby="passwordHelpBlock" />
                             <div id="passwordHelpBlock" className="form-text" style={{ marginLeft: '7px' }}>
                                 Can't be outside of U-district.
                             </div>
-                        </div>
+                        </div> */}
 
-                        <div className="input-group mb-3">
-                            <label htmlFor="rating-input" className="input-group-text">Rating:</label>
-                            <div className="stars mt-2" style={{ paddingLeft: '5px' }}>
+                        <select className="form-select mb-3" aria-label="Select Rating">
+                            <option selected>Rating:</option> 
+                            <option value="1">&#9733;</option>
+                            <option value="2">&#9733;&#9733;</option>
+                            <option value="3">&#9733;&#9733;&#9733;</option>
+                            <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+                            <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+                        </select>
+
+                        {/* <div className="input-group mb-3">
+                            <label htmlFor="rating-input" className="input-group-text">Rating:</label> */}
+                            {/* <div className="stars mt-2" style={{ paddingLeft: '5px' }}>
                                 <span className="fa fa-star checked"></span>
                                 <span className="fa fa-star checked"></span>
                                 <span className="fa fa-star checked"></span>
                                 <span className="fa fa-star checked"></span>
                                 <span className="fa fa-star notchecked"></span>
-                            </div>
-                        </div>
+                            </div> */}
+                            {/* <option value="1">&#9733;</option>
+                            <option value="2">&#9733;&#9733;</option>
+                            <option value="3">&#9733;&#9733;&#9733;</option>
+                            <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+                            <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+                        </div> */}
 
                         <div className="input-group mb-3">
                             <label htmlFor="review-input" className="input-group-text">Review:</label>
@@ -87,7 +102,7 @@ export function AddMeal() {
                 </section>
             </main>
         </div>
-    ) 
+    )
 }
 
 

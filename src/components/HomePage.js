@@ -126,14 +126,13 @@ export function HomePage() {
         setMeals(savedMeals || meals);
     }, []);
 
-
-
     const filterMeals = () => {
         return meals.filter(meal => {
             return (
                 (priceFilter === 'None' || meal.price === priceFilter) &&
                 (cuisineFilter === 'None' || meal.cuisine === cuisineFilter) &&
-                (ratingFilter === 'None' || meal.rating >= parseFloat(ratingFilter))
+                (ratingFilter === 'None' || meal.rating >= parseFloat(ratingFilter)) && 
+                (search === '' || meal.name.toLowerCase().includes(search.toLowerCase()))
             );
         });
     };
@@ -144,20 +143,26 @@ export function HomePage() {
         setMeals(newMeals);
     };
 
+    const handleInputChange = (e) => {
+        setSearch(e.target.value);
+    };
+
     return (
         <div>
             <header>
                 <div className="header-text">
+                    <div>
                     <h1>UW Crave</h1>
-                    <input
-                        type="text"
-                        placeholder="Search..."
-                        value={search}
-                        onChange={e => setSearch(e.target.value)}
-                    />
+                        <input className="search"
+                            type="text"
+                            placeholder="Search for meals..."
+                            value={search}
+                           onChange={handleInputChange}
+                        />
+                    </div>
                     <div>
                         <label htmlFor="Price">Price:</label>
-                        <select
+                        <select className="price"
                             name="price"
                             id="price"
                             aria-label="price filter selection"
@@ -171,7 +176,7 @@ export function HomePage() {
                             <option value="$$$$">$$$$</option>
                         </select>
                         <label htmlFor="Cuisine">Cuisine:</label>
-                        <select
+                        <select className="cuisine"
                             name="cuisine"
                             id="cuisine"
                             aria-label="cuisine filter selection"
