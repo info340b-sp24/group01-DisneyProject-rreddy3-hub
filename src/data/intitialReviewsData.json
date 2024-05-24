@@ -1,7 +1,7 @@
 [
     {
         "initialReviewID":1,
-        "name": "Chicken Bowl",
+        "name":"Chicken Bowl",
         "userRating":3,
         "restaurant":"Chipotle",
         "address":"4229 University Wy NE, Seattle, WA 98105",
@@ -13,7 +13,7 @@
     },
     {
         "initialReviewID":2,
-        "name": "Traditional Milk Tea",
+        "name":"Traditional Milk Tea",
         "userRating":4,
         "restaurant":"Don't Yell At Me",
         "address":"4511 University Wy NE, Seattle, WA 98105",
@@ -25,7 +25,7 @@
     },
     {
         "initialReviewID":3,
-        "name": "Paneer Burger",
+        "name":"Paneer Burger",
         "userRating":4,
         "restaurant":"Burger Hut",
         "address":"4142 University Wy NE, Seattle, WA 98105",

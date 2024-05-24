@@ -1,7 +1,21 @@
 import React, { useState } from 'react';
+import INITIAL_REVIEWS from '../data/intitialReviewsData.json';
+import { useParams } from 'react-router-dom';
+
+// import _ from 'lodash';
 
 // returns entire meal page body
 export function MealPage(props) {
+    // THIS SECTION DOESN'T WORK IDK WHAT TO DO
+    // // define props
+    // const initialReviewsData = props.initialReviewsProp;
+
+    // // find url
+    // const urlParams = useParams();
+    // const mealNameString = urlParams.mealName; 
+    
+    // let selectedReview =  _.find(INITIAL_REVIEWS, {"name":mealNameString}); //find meal in data
+
     return(
         <div className="meal-body">
             {/* <!-- Description (Name, Rating, Heart, Restaurant, Location, Price) --> */}
@@ -55,25 +69,6 @@ const otherReviews = [
         reviewDesc:"The tzaziki sauce is a little too sour for me, but the meat itself is well-seasoned! Overall pretty yummy!"
     }
 ];
-
-// function NavigationBar() {
-//     return(
-//         <nav>
-//             <div id="hamburger-menu">
-//                 <a href="#"><i className="fa fa-bars" aria-label="menu"></i></a>
-//             </div>
-//             <div className="laptop-nav">
-//                 <a href="index.html"><span className="material-icons" aria-label="Home">home</span></a> 
-//                 <button type="button" class="btn btn-light custom-color" aria-labelledby="favorites list">
-//                     <a href="favorites-list.html">Favorites &#x2665;</a>
-//                 </button>
-//                 <button type="button" class="btn btn-light custom-color" aria-labelledby="add meal form">
-//                     <a href="add-meal.html">Add Meal</a>
-//                 </button>
-//             </div>
-//         </nav>
-//     );
-// }
 
 // Generates meal description header; will expect a prop called InitialReviewData
 function MealDescription({ InitialReviewData, AvgRating }) {
@@ -198,7 +193,7 @@ function OtherReviews( {Reviews} ) {
     // for each object, create a review card
     let reviewCards = Reviews.map((review => {
         return (
-            <div class="review card">
+            <div className="review card" key={review.username}>
                 <div className="card-body">
                     <h4 className="card-title">{review.username}</h4>
                     {/* <!-- Rating (not interactive yet) --> */}
@@ -219,7 +214,7 @@ function OtherReviews( {Reviews} ) {
     }))
 
     return(
-        <div class="reviews">
+        <div className="reviews">
             {reviewCards}
         </div>
     );
