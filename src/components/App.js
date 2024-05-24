@@ -5,6 +5,8 @@ import { HomePage } from './HomePage.js';
 import { FavoritesList } from './FavoritesList.js';
 import { Routes, Route, Link } from 'react-router-dom'; 
 
+import initialReviews from '../data/intitialReviewsData.json';
+
 export function App(props) {
     return (
       <div>
@@ -27,9 +29,10 @@ export function App(props) {
         {/* Routes */}
         <Routes>
           <Route index element={<HomePage />}/>
-          <Route path="home" element={<HomePage />}/>
-          {/* Change meal page to be dynamic */}
-          {/* <Route path="mealPage/:mealID" element={<MealPage />}/> */}
+          <Route path="home" element={<HomePage />}>
+            {/* Change meal page to be dynamic */}
+            <Route path=":mealID" element={<MealPage />}/>
+          </Route>
           <Route path="mealPage" element={<MealPage />}/> 
           <Route path="addMeal" element={<AddMeal />}/>
           <Route path="favorites" element={<FavoritesList />}/>
