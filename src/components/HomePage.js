@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 // import 'font-awesome/css/font-awesome.min.css';
 // import 'https://fonts.googleapis.com/icon?family=Material+Icons';
@@ -8,16 +8,16 @@ export function HomePage() {
     const [priceFilter, setPriceFilter] = useState('None');
     const [cuisineFilter, setCuisineFilter] = useState('None');
     const [ratingFilter, setRatingFilter] = useState('None');
-    const [likedMeals, setLikedMeals] = useState(Array(12).fill(false));
+    const [meals, setMeals] = useState([
 
-    const meals = [
         {
             name: "Chicken Bowl",
             restaurant: "Chipotle",
             image: "img/chipotle-bowl.jpg",
             rating: 3,
             price: "$",
-            cuisine: "Mexican"
+            cuisine: "Mexican",
+            liked: false
         },
         {
             name: "Traditional Milk Tea",
@@ -25,7 +25,8 @@ export function HomePage() {
             image: "img/dont-yell-at-me.png",
             rating: 4,
             price: "$",
-            cuisine: "Boba"
+            cuisine: "Boba",
+            liked: false
         },
         {
             name: "Paneer Burger",
@@ -33,7 +34,8 @@ export function HomePage() {
             image: "img/burger-hut.png",
             rating: 4,
             price: "$",
-            cuisine: "Indian, American"
+            cuisine: "Indian, American",
+            liked: false
         },
         {
             name: "Beef Pho",
@@ -41,7 +43,8 @@ export function HomePage() {
             image: "img/pho-shizzle.png",
             rating: 4,
             price: "$",
-            cuisine: "Vietnamese"
+            cuisine: "Vietnamese",
+            liked: false
         },
         {
             name: "Aladdin's Fries",
@@ -49,7 +52,8 @@ export function HomePage() {
             image: "img/alladins-fries.png",
             rating: 4.25,
             price: "$",
-            cuisine: "Mediterranean"
+            cuisine: "Mediterranean",
+            liked: false
         },
         {
             name: "Black Milk Tea",
@@ -57,7 +61,8 @@ export function HomePage() {
             image: "img/tp-tea.jpg",
             rating: 4,
             price: "$",
-            cuisine: "Boba"
+            cuisine: "Boba",
+            liked: false
         },
         {
             name: "Salmon and Ahi Poke Bowl",
@@ -65,7 +70,8 @@ export function HomePage() {
             image: "img/hiroshis.png",
             rating: 5,
             price: "$$",
-            cuisine: "Hawaiian"
+            cuisine: "Hawaiian",
+            liked: false
         },
         {
             name: "Chocolate and Vanilla Ice Cream Combo",
@@ -73,7 +79,8 @@ export function HomePage() {
             image: "img/sweet-alchemy.jpg",
             rating: 5,
             price: "$$",
-            cuisine: "Dessert"
+            cuisine: "Dessert",
+            liked: false
         },
         {
             name: "Chicken Rice Bowl and Kimchi Mac Salad Combo",
@@ -81,7 +88,8 @@ export function HomePage() {
             image: "img/chi-mac.jpg",
             rating: 3,
             price: "$$$",
-            cuisine: "Korean"
+            cuisine: "Korean",
+            liked: false
         },
         {
             name: "Pollo Burrito",
@@ -89,7 +97,8 @@ export function HomePage() {
             image: "img/agua-verde.jpg",
             rating: 4,
             price: "$$$$",
-            cuisine: "Mexican"
+            cuisine: "Mexican",
+            liked: false
         },
         {
             name: "Cumin Lamb Biang Noodles",
@@ -97,7 +106,8 @@ export function HomePage() {
             image: "img/xian-noodles.jpg",
             rating: 5,
             price: "$$",
-            cuisine: "Chinese"
+            cuisine: "Chinese",
+            liked: false
         },
         {
             name: "Banh Mi Bowl",
@@ -105,9 +115,18 @@ export function HomePage() {
             image: "img/sizzle-and-crunch.png",
             rating: 5,
             price: "$",
-            cuisine: "Vietnamese"
+            cuisine: "Vietnamese",
+            liked: false
         }
-    ];
+    ]);
+
+    // used imported useEffect
+    useEffect(() => {
+        const savedMeals = JSON.parse(localStorage.getItem('likedMeals'));
+        setMeals(savedMeals || meals);
+    }, []);
+
+
 
     const filterMeals = () => {
         return meals.filter(meal => {
@@ -120,9 +139,9 @@ export function HomePage() {
     };
 
     const handleClick = (index) => {
-        const newLikedMeals = [...likedMeals];
-        newLikedMeals[index] = !newLikedMeals[index];
-        setLikedMeals(newLikedMeals);
+        const newMeals = [...meals];
+        newMeals[index].liked = !newMeals[index].liked;
+        setMeals(newMeals);
     };
 
     return (
@@ -211,7 +230,7 @@ export function HomePage() {
                                         <p className="card-text">{meal.price}</p>
                                         <p className="card-text">Cuisine: {meal.cuisine}</p>
                                         <button className="btn like-button" onClick={() => handleClick(index)}>
-                                            <span className="material-icons" style={{ color: likedMeals[index] ? 'red' : 'grey' }}>favorite_border</span>
+                                            <span className="material-icons" style={{ color: meal.liked ? 'red' : 'grey' }}>favorite_border</span>
                                         </button>
                                     </div>
                                 </div>
@@ -219,7 +238,7 @@ export function HomePage() {
                         ))}
                     </div>
                 </div>
-            </main>
-        </div>
+            </main >
+        </div >
     );
 }

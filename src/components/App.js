@@ -3,7 +3,7 @@ import { MealPage } from './MealPage';
 import { AddMeal } from './AddMeal.js'; 
 import { HomePage } from './HomePage.js';
 import { FavoritesList } from './FavoritesList.js';
-import { Routes, Route, Navigate, Link } from 'react-router-dom'; 
+import { Routes, Route, Link } from 'react-router-dom'; 
 
 export function App(props) {
     return (
