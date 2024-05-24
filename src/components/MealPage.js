@@ -25,7 +25,6 @@ const firstAladdinsReview = {
     userRating:5, 
     restaurant:"Aladdin's Gyro-cery",
     address:"Aladdin Gyro-Cery & Deli, 4139 University Wy NE, Seattle, WA 98105",
-    locationLink:"https://www.google.com/maps/dir/47.6512256,-122.3196672/aladdins+gyrocery/@47.6543674,-122.3275141,15z/data=!3m1!4b1!4m9!4m8!1m1!4e1!1m5!1m1!1s0x549014f359463677:0xd7b29936f0579d15!2m2!1d-122.3133702!2d47.657982?entry=ttu",
     price:"$", 
     cuisine:"Mediterranean",
     username:"notkyraxo",
@@ -79,7 +78,7 @@ const otherReviews = [
 // Generates meal description header; will expect a prop called InitialReviewData
 function MealDescription({ InitialReviewData, AvgRating }) {
     // access props (will implement these later)
-    let { name, restaurant, address, locationLink, price, cuisine} = InitialReviewData;
+    let { name, restaurant, address, price, cuisine} = InitialReviewData;
 
     // call and generate star ratings here
     // let stars = StarRatings(AvgRating);
@@ -108,9 +107,7 @@ function MealDescription({ InitialReviewData, AvgRating }) {
             <p className="rating">{AvgRating} / 5 stars</p> 
     
             <p>{cuisine}</p>
-            <a href={locationLink}>
-                {address}
-            </a>
+            <p>{address}</p>
         </header>
     );
 }
