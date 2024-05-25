@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { db, analytics } from '../firebaseConfig.js'; //
+import { collection, getDocs, setDoc, doc } from "firebase/firestore";
 // import 'font-awesome/css/font-awesome.min.css';
 // import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
@@ -8,139 +10,36 @@ export function HomePage() {
     const [priceFilter, setPriceFilter] = useState('None');
     const [cuisineFilter, setCuisineFilter] = useState('None');
     const [ratingFilter, setRatingFilter] = useState('None');
-    const [meals, setMeals] = useState([
+    const [meals, setMeals] = useState([]);
 
-        {
-            name: "Chicken Bowl",
-            restaurant: "Chipotle",
-            image: "img/chipotle-bowl.jpg",
-            rating: 3,
-            price: "$",
-            cuisine: "Mexican",
-            liked: false
-        },
-        {
-            name: "Traditional Milk Tea",
-            restaurant: "Don't Yell At Me",
-            image: "img/dont-yell-at-me.png",
-            rating: 4,
-            price: "$",
-            cuisine: "Boba",
-            liked: false
-        },
-        {
-            name: "Paneer Burger",
-            restaurant: "Burger Hut",
-            image: "img/burger-hut.png",
-            rating: 4,
-            price: "$",
-            cuisine: "Indian, American",
-            liked: false
-        },
-        {
-            name: "Beef Pho",
-            restaurant: "Pho Shizzle",
-            image: "img/pho-shizzle.png",
-            rating: 4,
-            price: "$",
-            cuisine: "Vietnamese",
-            liked: false
-        },
-        {
-            name: "Aladdin's Fries",
-            restaurant: "Aladdins",
-            image: "img/alladins-fries.png",
-            rating: 4.25,
-            price: "$",
-            cuisine: "Mediterranean",
-            liked: false
-        },
-        {
-            name: "Black Milk Tea",
-            restaurant: "TP Tea",
-            image: "img/tp-tea.jpg",
-            rating: 4,
-            price: "$",
-            cuisine: "Boba",
-            liked: false
-        },
-        {
-            name: "Salmon and Ahi Poke Bowl",
-            restaurant: "Hiroshi's",
-            image: "img/hiroshis.png",
-            rating: 5,
-            price: "$$",
-            cuisine: "Hawaiian",
-            liked: false
-        },
-        {
-            name: "Chocolate and Vanilla Ice Cream Combo",
-            restaurant: "Sweet Alchemy",
-            image: "img/sweet-alchemy.jpg",
-            rating: 5,
-            price: "$$",
-            cuisine: "Dessert",
-            liked: false
-        },
-        {
-            name: "Chicken Rice Bowl and Kimchi Mac Salad Combo",
-            restaurant: "Chi Mac",
-            image: "img/chi-mac.jpg",
-            rating: 3,
-            price: "$$$",
-            cuisine: "Korean",
-            liked: false
-        },
-        {
-            name: "Pollo Burrito",
-            restaurant: "Agua Verde",
-            image: "img/agua-verde.jpg",
-            rating: 4,
-            price: "$$$$",
-            cuisine: "Mexican",
-            liked: false
-        },
-        {
-            name: "Cumin Lamb Biang Noodles",
-            restaurant: "Xi'an Noodles",
-            image: "img/xian-noodles.jpg",
-            rating: 5,
-            price: "$$",
-            cuisine: "Chinese",
-            liked: false
-        },
-        {
-            name: "Banh Mi Bowl",
-            restaurant: "Sizzle and Crunch",
-            image: "img/sizzle-and-crunch.png",
-            rating: 5,
-            price: "$",
-            cuisine: "Vietnamese",
-            liked: false
-        }
-    ]);
-
-    // used imported useEffect
     useEffect(() => {
-        const savedMeals = JSON.parse(localStorage.getItem('likedMeals'));
-        setMeals(savedMeals || meals);
+        const fetchMeals = async () => {
+            const mealsCollection = collection(db, "home");
+            const mealsSnapshot = await getDocs(mealsCollection);
+            const mealsList = mealsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+            setMeals(mealsList);
+        };
+
+        fetchMeals();
     }, []);
 
     const filterMeals = () => {
         return meals.filter(meal => {
             return (
                 (priceFilter === 'None' || meal.price === priceFilter) &&
-                (cuisineFilter === 'None' || meal.cuisine === cuisineFilter) &&
-                (ratingFilter === 'None' || meal.rating >= parseFloat(ratingFilter)) && 
+                (cuisineFilter === 'None' || meal.cuisine.includes(cuisineFilter)) &&
+                (ratingFilter === 'None' || meal.rating >= parseFloat(ratingFilter)) &&
                 (search === '' || meal.name.toLowerCase().includes(search.toLowerCase()))
             );
         });
     };
 
-    const handleClick = (index) => {
+    const handleClick = async (index) => {
         const newMeals = [...meals];
         newMeals[index].liked = !newMeals[index].liked;
         setMeals(newMeals);
+        const meal = newMeals[index];
+        await setDoc(doc(db, "home", meal.id), meal);
     };
 
     const handleInputChange = (e) => {
@@ -152,12 +51,12 @@ export function HomePage() {
             <header>
                 <div className="header-text">
                     <div>
-                    <h1>UW Crave</h1>
+                        <h1>UW Crave</h1>
                         <input className="search"
                             type="text"
                             placeholder="Search for meals..."
                             value={search}
-                           onChange={handleInputChange}
+                            onChange={handleInputChange}
                         />
                     </div>
                     <div>
