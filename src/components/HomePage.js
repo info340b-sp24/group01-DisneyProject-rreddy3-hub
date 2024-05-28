@@ -1,9 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
-import { db, analytics } from '../firebaseConfig.js'; 
-import { collection, getDocs, setDoc, doc } from "firebase/firestore"; 
-
 // import 'font-awesome/css/font-awesome.min.css';
 // import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
@@ -12,17 +8,137 @@ export function HomePage() {
     const [priceFilter, setPriceFilter] = useState('None');
     const [cuisineFilter, setCuisineFilter] = useState('None');
     const [ratingFilter, setRatingFilter] = useState('None');
-    const [meals, setMeals] = useState([]); 
+    const [meals, setMeals] = useState([]);
+
+    const initialMeals = [
+        {
+            id: 1,
+            name: "Chicken Bowl",
+            restaurant: "Chipotle",
+            image: "img/chipotle-bowl.jpg",
+            rating: 3,
+            price: "$",
+            cuisine: "Mexican",
+            liked: false
+        },
+        {
+            id: 2,
+            name: "Traditional Milk Tea",
+            restaurant: "Don't Yell At Me",
+            image: "img/dont-yell-at-me.png",
+            rating: 4,
+            price: "$",
+            cuisine: "Boba",
+            liked: false
+        },
+        {
+            id: 3,
+            name: "Paneer Burger",
+            restaurant: "Burger Hut",
+            image: "img/burger-hut.png",
+            rating: 4,
+            price: "$",
+            cuisine: "Indian, American",
+            liked: false
+        },
+        {
+            id: 4,
+            name: "Beef Pho",
+            restaurant: "Pho Shizzle",
+            image: "img/pho-shizzle.png",
+            rating: 4,
+            price: "$",
+            cuisine: "Vietnamese",
+            liked: false
+        },
+        {
+            id: 5,
+            name: "Aladdin's Fries",
+            restaurant: "Aladdins",
+            image: "img/alladins-fries.png",
+            rating: 4.25,
+            price: "$",
+            cuisine: "Mediterranean",
+            liked: false
+        },
+        {
+            id: 6,
+            name: "Black Milk Tea",
+            restaurant: "TP Tea",
+            image: "img/tp-tea.jpg",
+            rating: 4,
+            price: "$",
+            cuisine: "Boba",
+            liked: false
+        },
+        {
+            id: 7,
+            name: "Salmon and Ahi Poke Bowl",
+            restaurant: "Hiroshi's",
+            image: "img/hiroshis.png",
+            rating: 5,
+            price: "$$",
+            cuisine: "Hawaiian",
+            liked: false
+        },
+        {
+            id: 8,
+            name: "Chocolate and Vanilla Ice Cream Combo",
+            restaurant: "Sweet Alchemy",
+            image: "img/sweet-alchemy.jpg",
+            rating: 5,
+            price: "$$",
+            cuisine: "Dessert",
+            liked: false
+        },
+        {
+            id: 9,
+            name: "Chicken Rice Bowl and Kimchi Mac Salad Combo",
+            restaurant: "Chi Mac",
+            image: "img/chi-mac.jpg",
+            rating: 3,
+            price: "$$$",
+            cuisine: "Korean",
+            liked: false
+        },
+        {
+            id: 10,
+            name: "Pollo Burrito",
+            restaurant: "Agua Verde",
+            image: "img/agua-verde.jpg",
+            rating: 4,
+            price: "$$$$",
+            cuisine: "Mexican",
+            liked: false
+        },
+        {
+            id: 11,
+            name: "Cumin Lamb Biang Noodles",
+            restaurant: "Xi'an Noodles",
+            image: "img/xian-noodles.jpg",
+            rating: 5,
+            price: "$$",
+            cuisine: "Chinese",
+            liked: false
+        },
+        {
+            id: 12,
+            name: "Banh Mi Bowl",
+            restaurant: "Sizzle and Crunch",
+            image: "img/sizzle-and-crunch.png",
+            rating: 5,
+            price: "$",
+            cuisine: "Vietnamese",
+            liked: false
+        }
+    ];
 
     useEffect(() => {
-        const fetchMeals = async () => {
-            const mealsCollection = collection(db, "home");
-            const mealsSnapshot = await getDocs(mealsCollection);
-            const mealsList = mealsSnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-            setMeals(mealsList);
-        };
-
-        fetchMeals();
+        const storedMeals = initialMeals.map(meal => {
+            const liked = JSON.parse(localStorage.getItem(`meal-${meal.id}`));
+            return { ...meal, liked: liked !== null ? liked : meal.liked };
+        });
+        setMeals(storedMeals);
     }, []);
 
     const filterMeals = () => {
@@ -31,17 +147,16 @@ export function HomePage() {
                 (priceFilter === 'None' || meal.price === priceFilter) &&
                 (cuisineFilter === 'None' || meal.cuisine.includes(cuisineFilter)) &&
                 (ratingFilter === 'None' || meal.rating >= parseFloat(ratingFilter)) &&
-                (search === '' || meal.name && meal.name.toLowerCase().includes(search.toLowerCase()))
+                (search === '' || (meal.name && meal.name.toLowerCase().includes(search.toLowerCase())))
             );
         });
     };
 
-    const handleClick = async (index) => {
+    const handleClick = (index) => {
         const newMeals = [...meals];
         newMeals[index].liked = !newMeals[index].liked;
         setMeals(newMeals);
-        const meal = newMeals[index];
-        await setDoc(doc(db, "home", meal.id), meal);
+        localStorage.setItem(`meal-${newMeals[index].id}`, JSON.stringify(newMeals[index].liked));
     };
 
     const handleInputChange = (e) => {
@@ -131,7 +246,7 @@ export function HomePage() {
                                             {[...Array(5 - Math.ceil(meal.rating))].map((_, i) => (
                                                 <span key={i} className="fa fa-star"></span>
                                             ))}
-                                        </div> 
+                                        </div>
                                         <p className="card-text rating">{meal.rating} / 5 stars</p>
                                         <p className="card-text">{meal.price}</p>
                                         <p className="card-text">Cuisine: {meal.cuisine}</p>
@@ -144,7 +259,7 @@ export function HomePage() {
                         ))}
                     </div>
                 </div>
-            </main >
-        </div >
+            </main>
+        </div>
     );
 }
