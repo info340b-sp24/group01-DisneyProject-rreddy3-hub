@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { db, analytics } from '../firebaseConfig.js'; //
-import { collection, getDocs, setDoc, doc } from "firebase/firestore";
+
+import { db, analytics } from '../firebaseConfig.js'; 
+import { collection, getDocs, setDoc, doc } from "firebase/firestore"; 
+
 // import 'font-awesome/css/font-awesome.min.css';
 // import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
@@ -10,7 +12,7 @@ export function HomePage() {
     const [priceFilter, setPriceFilter] = useState('None');
     const [cuisineFilter, setCuisineFilter] = useState('None');
     const [ratingFilter, setRatingFilter] = useState('None');
-    const [meals, setMeals] = useState([]);
+    const [meals, setMeals] = useState([]); 
 
     useEffect(() => {
         const fetchMeals = async () => {
@@ -29,7 +31,7 @@ export function HomePage() {
                 (priceFilter === 'None' || meal.price === priceFilter) &&
                 (cuisineFilter === 'None' || meal.cuisine.includes(cuisineFilter)) &&
                 (ratingFilter === 'None' || meal.rating >= parseFloat(ratingFilter)) &&
-                (search === '' || meal.name.toLowerCase().includes(search.toLowerCase()))
+                (search === '' || meal.name && meal.name.toLowerCase().includes(search.toLowerCase()))
             );
         });
     };
@@ -129,7 +131,7 @@ export function HomePage() {
                                             {[...Array(5 - Math.ceil(meal.rating))].map((_, i) => (
                                                 <span key={i} className="fa fa-star"></span>
                                             ))}
-                                        </div>
+                                        </div> 
                                         <p className="card-text rating">{meal.rating} / 5 stars</p>
                                         <p className="card-text">{meal.price}</p>
                                         <p className="card-text">Cuisine: {meal.cuisine}</p>

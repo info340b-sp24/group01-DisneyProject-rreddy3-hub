@@ -1,7 +1,6 @@
 /* General Styling */
 h1 {
-    font-weight: bold;
-    margin: 0.5rem; 
+    font-weight: bold; 
     display: inline-block; 
 }
 
@@ -11,7 +10,7 @@ header {
 
 .header-text {
     color: white;
-    margin: 0.5rem;
+    margin: 0.7rem;
 }
 
 .search {
