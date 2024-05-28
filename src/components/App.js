@@ -79,7 +79,7 @@ export function App(props) {
         </Routes>
 
         {/* Chipotle Meal Page */}
-        {/* <MealPage /> */}
+        <MealPage />
         
         {/* Footer */}
         <footer>
