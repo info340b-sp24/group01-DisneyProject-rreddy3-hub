@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import firebase from 'firebase/app';
-import 'firebase/database';
+// import firebase from 'firebase/app';
+// import 'firebase/database';
 // import 'font-awesome/css/font-awesome.min.css';
 // import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
@@ -165,10 +165,10 @@ export function HomePage() {
         setSearch(e.target.value);
     };
 
-    const addToFavorites = (meal) => {
-        // Add the meal to the favorites node in Firebase
-        firebase.database().ref('favorites').push(meal);
-    };
+    // const addToFavorites = (meal) => {
+    //     // Add the meal to the favorites node in Firebase
+    //     firebase.database().ref('favorites').push(meal);
+    // }; 
 
     return (
         <div>

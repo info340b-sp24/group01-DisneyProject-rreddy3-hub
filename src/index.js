@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import './index.css'; 
 import { App }  from './components/App';
 import { BrowserRouter } from 'react-router-dom';
+import { initializeApp } from "firebase/app";
 
 const firebaseConfig = {
   apiKey: "AIzaSyBiToIJV84aUP1lr8X5_SMfTKMZfr2b-Dc",
@@ -14,7 +15,7 @@ const firebaseConfig = {
   measurementId: "G-S84WZYQ9DQ"
 };
 
-const app = initializeApp(firebaseConfig);
+initializeApp(firebaseConfig); 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

@@ -88,14 +88,14 @@ export function AddMeal() {
                         </div>
 
                         <div className="input-group mb-5">
-                            <button type="button" className="btn btn-outline-primary">
-                                <i className="fa fa-camera"></i>
+                            <button type="button" className="btn btn-outline-primary" style={{marginTop: '0.5rem', marginLeft: '0.5rem'}} >
+                                <i className="fa fa-camera" style={{paddingRight: '0.3rem'}} ></i>
                                 Add a photo update
                             </button>
                         </div>
 
                         <div>
-                            <button type="submit" className="btn btn-primary mb-3">Submit</button>
+                            <button type="submit" className="btn btn-primary mb-10" style={{marginLeft: '0.5rem'}} >Submit</button>
                         </div>
 
                     </form>
