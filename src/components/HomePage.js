@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import { Link } from 'react-router-dom';
 // import firebase from 'firebase/app';
 // import 'firebase/database';
 // import 'font-awesome/css/font-awesome.min.css';
@@ -235,7 +236,8 @@ export function HomePage() {
                     </div>
                 </div>
             </header>
-            <main>
+            {/* original main */}
+            {/* <main>
                 <div className="container">
                     <div className="row">
                         {filterMeals().map((meal, index) => (
@@ -245,6 +247,44 @@ export function HomePage() {
                                     <div className="card-body">
                                         <h2 className="card-title">{meal.name}, {meal.restaurant}</h2>
                                         <button className="reviews-link btn">See reviews</button>
+                                        <div className="stars">
+                                            {[...Array(Math.floor(meal.rating))].map((_, i) => (
+                                                <span key={i} className="fa fa-star checked"></span>
+                                            ))}
+                                            {meal.rating % 1 !== 0 && <span className="fa fa-star-half-o checked"></span>}
+                                            {[...Array(5 - Math.ceil(meal.rating))].map((_, i) => (
+                                                <span key={i} className="fa fa-star"></span>
+                                            ))}
+                                        </div>
+                                        <p className="card-text rating">{meal.rating} / 5 stars</p>
+                                        <p className="card-text">{meal.price}</p>
+                                        <p className="card-text">Cuisine: {meal.cuisine}</p>
+                                        <button className="btn like-button" onClick={() => handleClick(index)}>
+                                            <span className="material-icons" style={{ color: meal.liked ? 'red' : 'grey' }}>favorite_border</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </main> */}
+            
+            {/* Trying to get "see reviews" button to work */}
+            <main>
+                <div className="container">
+                    <div className="row">
+                        {filterMeals().map((meal, index) => (
+                            <div className="col-md-4" key={index}>
+                                <div className="card mb-3" style={{ width: "15rem" }}>
+                                    <img src={meal.image} className="card-img-top" alt={`${meal.name} from ${meal.restaurant}`} />
+                                    <div className="card-body">
+                                        <h2 className="card-title">{meal.name}, {meal.restaurant}</h2>
+
+                                        {/* See Reviews should link to corresponding page */}
+                                            {/* when you click, redirect to meal page */}
+                                        <Link to={`/home/${meal.name}`} className="reviews-link btn">See reviews</Link>
+
                                         <div className="stars">
                                             {[...Array(Math.floor(meal.rating))].map((_, i) => (
                                                 <span key={i} className="fa fa-star checked"></span>

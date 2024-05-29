@@ -92,16 +92,16 @@ export function App(props) {
         <Route index element={<HomePage />} />
         <Route path="home" element={<HomePage />}>
           {/* Change meal page to be dynamic */}
-          {/* <Route path=":mealName" element={<MealPage />}/> */}
+          <Route path=":mealCard" element={<MealPage />}/>
         </Route>
-        <Route path="mealPage" element={<MealPage />} />
+        {/* <Route path="mealPage" element={<MealPage />} /> */}
         <Route path="addMeal" element={<AddMeal />} />
         <Route path="favorites" element={<FavoritesList />} />
         <Route path="login" element={<Login setIsAuth={setIsAuth} />} />
       </Routes> 
 
         {/* Chipotle Meal Page */}
-        {/* <MealPage /> */}
+        <MealPage />
         
         {/* Footer */}
         <footer>

@@ -1,24 +1,34 @@
 import React, { useState } from 'react';
 import INITIAL_REVIEWS from '../data/intitialReviewsData.json';
 import { useParams } from 'react-router-dom';
+//import the function from the realtime database module
+import { getDatabase, ref, onValue } from 'firebase/database';
 
-// import _ from 'lodash';
+import _ from 'lodash';
 
 // returns entire meal page body
 export function MealPage(props) {
-    // THIS SECTION DOESN'T WORK IDK WHAT TO DO
-    // // define props
-    // const initialReviewsData = props.initialReviewsProp;
+    // get a reference to the database service
+    const db = getDatabase();
 
-    // // find url
-    // const urlParams = useParams();
-    // const mealNameString = urlParams.mealName; 
+    // get reference to the meal you want to look at
+    const mealsRef = ref(db, "meals") // looks at all meals
+
+    // THIS SECTION DOESN'T WORK IDK WHAT TO DO
+    // define props
+    const initialReview = props.initialReview; // prop t
+
+    // find url
+    const urlParams = useParams();
+    const mealNameString = urlParams.mealName; 
     
-    // let selectedReview =  _.find(INITIAL_REVIEWS, {"name":mealNameString}); //find meal in data
+    // this might be the issue? I don't think its finding the review based on the url
+    const selectedReview =  _.find(mealsRef, {"name":mealNameString}); // look through meals; if key = mealNameString, then access that
 
     return(
         <div className="meal-body">
             {/* <!-- Description (Name, Rating, Heart, Restaurant, Location, Price) --> */}
+            {/* When I try to pass in selectedReview as the prop, it doesn't seem to work */}
             <MealDescription InitialReviewData={firstAladdinsReview} AvgRating={3.75}/>
 
             {/* Initial Review Card */}
