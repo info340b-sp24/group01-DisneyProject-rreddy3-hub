@@ -162,6 +162,7 @@ export function HomePage(props) {
         localStorage.setItem(`meal-${newMeals[index].id}`, JSON.stringify(newMeals[index].liked));
     };
 
+    // search bar function
     const handleInputChange = (e) => {
         setSearch(e.target.value);
     };
