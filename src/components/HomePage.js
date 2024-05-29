@@ -171,8 +171,9 @@ export function HomePage(props) {
 
     // when you click on "See reviews" for a given meal, update the "Current review"
     const handleSeeReviews = (event) => {
-        console.log("You chose " + event.target.value);
+        console.log("You chose " + event.target.value + " currentReview = " + currentReview + " event target = " + event.target);
         props.updateCurrentReview(event.target.value); // should update to meal
+        console.log("After updating... You chose " + event.target.value + " currentReview = " + currentReview + " event target = " + event.target.value);
     }
 
     // const addToFavorites = (meal) => {
@@ -292,8 +293,9 @@ export function HomePage(props) {
 
                                         {/* See Reviews should link to corresponding page */}
                                             {/* when you click, redirect to meal page */}
-                                        <Link to={`/home/${meal.name}`} className="reviews-link btn" value={meal.name} onClick={handleSeeReviews}>See reviews</Link>
-
+                                        {/* <Link to={`/home/${meal.name}`} className="reviews-link btn" value={meal.name} onClick={handleSeeReviews}>See reviews</Link> */}
+                                        <button className="reviews-link btn" value={meal.name} onClick={handleSeeReviews}>See reviews</button>
+                                        
                                         <div className="stars">
                                             {[...Array(Math.floor(meal.rating))].map((_, i) => (
                                                 <span key={i} className="fa fa-star checked"></span>

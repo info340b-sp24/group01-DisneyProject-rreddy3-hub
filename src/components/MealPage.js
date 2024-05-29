@@ -18,14 +18,17 @@ export function MealPage(props) {
     // // define props
     // const initialReview = props.initialReview; 
     const currentReview = props.currentReview;
+    console.log(currentReview);
 
-
-    // find url (idk if this works gahh)
+    // find url (not working properly)
     const urlParams = useParams();
     const mealNameString = urlParams.mealName; 
+    // console.log(mealNameString);
     
     // this might be the issue? I don't think its finding the review based on the url
-    const selectedReview =  _.find(mealsRef, {"name":currentReview}); // look through meals; if key = mealNameString, then access that
+    // const selectedReview =  _.find(mealsRef, {"name":currentReview}); // look through meals; if key = mealNameString, then access that
+    const selectedReview = _.find(INITIAL_REVIEWS, {"name": currentReview});
+    console.log(selectedReview);
 
     return(
         <div className="meal-body">

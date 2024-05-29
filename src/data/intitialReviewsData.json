@@ -1,6 +1,6 @@
 {
     "meals": {
-        "Chicken Bowl - Chipotle": {
+        "Chicken Bowl": {
             "name": "Chicken Bowl",
             "userRating": 3,
             "restaurant": "Chipotle",
@@ -12,7 +12,7 @@
             "reviewDesc": "So yummy!!",
             "otherReviews": {}
         },
-        "Traditional Milk Tea - Don't Yell At Me": {
+        "Traditional Milk Tea": {
             "name": "Traditional Milk Tea",
             "userRating": 4,
             "restaurant": "Don't Yell At Me",
@@ -24,7 +24,7 @@
             "reviewDesc": "The best milk tea on the ave. Not too sweet, but super flavorful!",
             "otherReviews": {}
         },
-        "Paneer Burger - Burger Hut": {
+        "Paneer Burger": {
             "name": "Paneer Burger",
             "userRating": 4,
             "restaurant": "Burger Hut",
@@ -36,7 +36,7 @@
             "reviewDesc": "Such a good fusion place at a cheap price! Highly recommend.",
             "otherReviews": {}
         },
-        "Beef Pho - Pho Shizzle": {
+        "Beef Pho": {
             "name": "Beef Pho",
             "userRating": 4,
             "restaurant": "Pho Shizzle",
@@ -48,7 +48,7 @@
             "reviewDesc": "The service here is so fast and the food is just as satisfying!",
             "otherReviews": {}
         },
-        "Aladdin's Fries - Aladdin's Gyro-cery": {
+        "Aladdin's Fries": {
             "name": "Aladdin's Fries",
             "userRating": 5,
             "restaurant": "Aladdin's Gyro-cery",
@@ -73,7 +73,7 @@
                 }
             }
         },
-        "Black Milk Tea - TP Tea": {
+        "Black Milk Tea": {
             "name": "Black Milk Tea",
             "userRating": 4,
             "restaurant": "TP Tea",
@@ -85,7 +85,7 @@
             "reviewDesc": "I love TP tea! The black tea is really great for when you're craving a sweet treat.",
             "otherReviews": {}
         },
-        "Salmon and Ahi Poke Bowl - Hiroshi's": {
+        "Salmon and Ahi Poke Bowl": {
             "name": "Salmon and Ahi Poke Bowl",
             "userRating": 5,
             "restaurant": "Hiroshi's",
@@ -97,7 +97,7 @@
             "reviewDesc": "I love how customizable and cheap this place is! They pack their servings which is definitely worth the price.",
             "otherReviews": {}
         },
-        "Chocolate and Vanilla Ice Cream Combo - Sweet Alchemy": {
+        "Chocolate and Vanilla Ice Cream Combo": {
             "name": "Chocolate and Vanilla Ice Cream Combo",
             "userRating": 5,
             "restaurant": "Sweet Alchemy",
@@ -109,7 +109,7 @@
             "reviewDesc": "One of my favorites at Sweet Alchemy. You can never go wrong with chocolate and vanilla!",
             "otherReviews": {}
         },
-        "Chicken Rice Bowl and Kimchi Mac Salad Combo - Chi Mac": {
+        "Chicken Rice Bowl and Kimchi Mac Salad Combo": {
             "name": "Chicken Rice Bowl and Kimchi Mac Salad Combo",
             "userRating": 5,
             "restaurant": "Chi Mac",
@@ -121,7 +121,7 @@
             "reviewDesc": "This bowl is actually so filling and so tasty!",
             "otherReviews": {}
         },
-        "Pollo Burrito - Agua Verde": {
+        "Pollo Burrito": {
             "name": "Pollo Burrito",
             "userRating": 4,
             "restaurant": "Agua Verde",
@@ -133,7 +133,7 @@
             "reviewDesc": "Pretty decent, but kind of expensive! Still really yummy.",
             "otherReviews": {}
         },
-        "Cumin Lamb Biang Noodles - Xi'an Noodles": {
+        "Cumin Lamb Biang Noodles": {
             "name": "Cumin Lamb Biang Noodles",
             "userRating": 5,
             "restaurant": "Xi'an Noodles",
@@ -145,7 +145,7 @@
             "reviewDesc": "These noodles are hand pulled and its amazing! Really authentic and delicious!",
             "otherReviews": {}
         },
-        "Banh Mi Bowl - Sizzle and Crunch": {
+        "Banh Mi Bowl": {
             "name": "Banh Mi Bowl",
             "userRating": 5,
             "restaurant": "Sizzle and Crunch",
