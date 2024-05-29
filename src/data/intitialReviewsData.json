@@ -63,7 +63,23 @@
             "username": "notkyraxo",
             "img": "img/alladins-fries.png",
             "reviewDesc": "One of the best fries in the U-District! The staff is really friendly and they're always open late, which is a plus. The mix of beef and lamb is really superior. Plus it's pretty affordable!",  
-            "otherReviews": []
+            "otherReviews": [
+                {
+                    "username":"randomryan",
+                    "userRating":3,
+                    "reviewDesc":"This one's pretty good, but I prefer the other Aladdin's location closer to the old Target. There's a difference!"
+                },
+                {
+                    "username":"madeupmarushka",
+                    "userRating":4,
+                    "reviewDesc":"Love this place, and love this meal!"
+                },
+                {
+                    "username":"totallyrealrachel",
+                    "userRating":3,
+                    "reviewDesc":"The tzaziki sauce is a little too sour for me, but the meat itself is well-seasoned! Overall pretty yummy!"
+                }
+            ]
         },
         {
             "initialReviewID": 6,
@@ -141,23 +157,7 @@
             "username": "bigbackbob",
             "img": "img/xian-noodles.jpg",
             "reviewDesc": "These noodles are hand pulled and its amazing! Really authentic and delicious!",
-            "otherReviews": [    
-                {
-                    "username":"randomryan",
-                    "userRating":3,
-                    "reviewDesc":"This one's pretty good, but I prefer the other Aladdin's location closer to the old Target. There's a difference!"
-                },
-                {
-                    "username":"madeupmarushka",
-                    "userRating":4,
-                    "reviewDesc":"Love this place, and love this meal!"
-                },
-                {
-                    "username":"totallyrealrachel",
-                    "userRating":3,
-                    "reviewDesc":"The tzaziki sauce is a little too sour for me, but the meat itself is well-seasoned! Overall pretty yummy!"
-                }
-            ]
+            "otherReviews": []
         },
         {
             "initialReviewID": 12,
