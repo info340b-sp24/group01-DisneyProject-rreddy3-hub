@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 // import 'font-awesome/css/font-awesome.min.css';
 // import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
-export function HomePage() {
+export function HomePage(props) {
     const [search, setSearch] = useState('');
     const [priceFilter, setPriceFilter] = useState('None');
     const [cuisineFilter, setCuisineFilter] = useState('None');
@@ -166,6 +166,15 @@ export function HomePage() {
         setSearch(e.target.value);
     };
 
+    // code for handling "see reviews"
+    const currentReview = props.currentReview;
+
+    // when you click on "See reviews" for a given meal, update the "Current review"
+    const handleSeeReviews = (event) => {
+        console.log("You chose " + event.target.value);
+        props.updateCurrentReview(event.target.value); // should update to meal
+    }
+
     // const addToFavorites = (meal) => {
     //     // Add the meal to the favorites node in Firebase
     //     firebase.database().ref('favorites').push(meal);
@@ -283,7 +292,7 @@ export function HomePage() {
 
                                         {/* See Reviews should link to corresponding page */}
                                             {/* when you click, redirect to meal page */}
-                                        <Link to={`/home/${meal.name}`} className="reviews-link btn">See reviews</Link>
+                                        <Link to={`/home/${meal.name}`} className="reviews-link btn" value={meal.name} onClick={handleSeeReviews}>See reviews</Link>
 
                                         <div className="stars">
                                             {[...Array(Math.floor(meal.rating))].map((_, i) => (

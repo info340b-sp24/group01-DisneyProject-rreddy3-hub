@@ -24,6 +24,14 @@ export function App(props) {
     })
   }
 
+  // meal card stuff
+  const [currentReview, setCurrentReview] = useState(""); // if a user hasn't chosen a meal, then default to nothing 
+
+  // function to update current channel
+  const updateCurrentReview = (reviewName) => {
+    setCurrentReview(reviewName);
+  }
+
   return (
     <div>
       {/* Mobile Hamburger Nav */}
@@ -87,21 +95,21 @@ export function App(props) {
         </div>
       </nav>
 
-      {/* Routes */}
-      <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="home" element={<HomePage />}>
-          {/* Change meal page to be dynamic */}
-          <Route path=":mealCard" element={<MealPage />}/>
-        </Route>
-        {/* <Route path="mealPage" element={<MealPage />} /> */}
-        <Route path="addMeal" element={<AddMeal />} />
-        <Route path="favorites" element={<FavoritesList />} />
-        <Route path="login" element={<Login setIsAuth={setIsAuth} />} />
-      </Routes> 
+        {/* Routes */}
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path="home" element={<HomePage updateCurrentReview={updateCurrentReview} currentReview={currentReview}/>}>
+            {/* Change meal page to be dynamic */}
+            <Route path=":mealCard" element={<MealPage updateCurrentReview={updateCurrentReview} currentReview={currentReview}/>}/>
+          </Route>
+          {/* <Route path="mealPage" element={<MealPage />} /> */}
+          <Route path="addMeal" element={<AddMeal />} />
+          <Route path="favorites" element={<FavoritesList />} />
+          <Route path="login" element={<Login setIsAuth={setIsAuth} />} />
+        </Routes> 
 
         {/* Chipotle Meal Page */}
-        <MealPage />
+        <MealPage updateCurrentReview={updateCurrentReview} currentReview={currentReview} />
         
         {/* Footer */}
         <footer>
