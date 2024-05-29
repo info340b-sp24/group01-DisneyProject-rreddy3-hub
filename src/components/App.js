@@ -24,13 +24,13 @@ export function App(props) {
     })
   }
 
-  // meal card stuff
-  const [currentReview, setCurrentReview] = useState(""); // if a user hasn't chosen a meal, then default to nothing 
+  // // meal card stuff
+  // const [currentReview, setCurrentReview] = useState(""); // if a user hasn't chosen a meal, then default to nothing 
 
-  // function to update current channel
-  const updateCurrentReview = (reviewName) => {
-    setCurrentReview(reviewName);
-  }
+  // // function to update current channel
+  // const updateCurrentReview = (reviewName) => {
+  //   setCurrentReview(reviewName);
+  // }
 
   return (
     <div>
@@ -61,21 +61,6 @@ export function App(props) {
       </nav>
 
       {/* Laptop Nav */}
-      {/* <nav>
-            <div className="laptop-nav">
-                <button type="button" className="btn btn-light custom-color">
-                  <Link to="home"><span className="material-icons" aria-label="Home">home</span></Link> 
-                </button>
-                <button type="button" className="btn btn-light custom-color" aria-labelledby="favorites list">
-                    <Link to="favorites">Favorites &#x2665;</Link>
-                </button>
-                <button type="button" className="btn btn-light custom-color" aria-labelledby="add meal form">
-                    <Link to="addMeal">Add Meal</Link>
-                </button>
-            </div>
-        </nav> */}
-
-      {/* Trying something new for laptop nav */}
       <nav id="laptop-nav" className="navbar navbar-expand-lg navbar-light bg-light navbar-custom">
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
@@ -98,9 +83,10 @@ export function App(props) {
         {/* Routes */}
         <Routes>
           <Route index element={<HomePage />} />
-          <Route path="home" element={<HomePage updateCurrentReview={updateCurrentReview} currentReview={currentReview}/>}>
+          <Route path="home" element={<HomePage />}>
             {/* Change meal page to be dynamic */}
-            <Route path=":mealCard" element={<MealPage updateCurrentReview={updateCurrentReview} currentReview={currentReview}/>}/>
+            {/* <Route path=":mealCard" element={<MealPage updateCurrentReview={updateCurrentReview} currentReview={currentReview}/>}/> */}
+            <Route path=":mealCard" element={<MealPage />}/>
           </Route>
           {/* <Route path="mealPage" element={<MealPage />} /> */}
           <Route path="addMeal" element={<AddMeal />} />
@@ -109,7 +95,8 @@ export function App(props) {
         </Routes> 
 
         {/* Chipotle Meal Page */}
-        <MealPage updateCurrentReview={updateCurrentReview} currentReview={currentReview} />
+        {/* <MealPage updateCurrentReview={updateCurrentReview} currentReview={currentReview} /> */}
+        <MealPage />
         
         {/* Footer */}
         <footer>

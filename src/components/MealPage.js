@@ -8,17 +8,11 @@ import _ from 'lodash';
 
 // returns entire meal page body
 export function MealPage(props) {
-    // // get a reference to the database service
+    // get a reference to the database service
     const db = getDatabase();
 
-    // // get reference to the meal you want to look at
+    // get reference to the meal you want to look at
     const mealsRef = ref(db, "meals") // looks at all meals
-
-    // // THIS SECTION DOESN'T WORK IDK WHAT TO DO
-    // // define props
-    // const initialReview = props.initialReview; 
-    const currentReview = props.currentReview;
-    console.log(currentReview);
 
     // find url (not working properly)
     const urlParams = useParams();
@@ -27,8 +21,6 @@ export function MealPage(props) {
     
     // this might be the issue? I don't think its finding the review based on the url
     // const selectedReview =  _.find(mealsRef, {"name":currentReview}); // look through meals; if key = mealNameString, then access that
-    const selectedReview = _.find(INITIAL_REVIEWS, {"name": currentReview});
-    console.log(selectedReview);
 
     return(
         <div className="meal-body">
