@@ -10,7 +10,7 @@ header {
 
 .header-text {
     color: white;
-    margin: 0.7rem;
+    margin: 0.1rem; 
 }
 
 .search {
@@ -43,20 +43,6 @@ header {
 .container .stars {
     display: block;
 }
-
-/* Add Meal Page */
-.checked {
-    color: orange;
-}
-
-.notchecked {
-    color: gray; 
-}
-
-.home-icon {
-    margin-left: 2rem;
-}
-
 
 body {
     color: black;
@@ -156,6 +142,17 @@ nav .btn {
 }
 footer {
     color: black; 
+}
+
+.google-log-in {
+    background-color: white;
+    align-items: center;
+    border-radius: 10px; 
+    height: 2.6rem; 
+    margin: auto; 
+    padding-right: 1rem; 
+    margin-top: 3rem; 
+    margin-bottom: 31rem; 
 }
 
 /* Default (xs screens) */

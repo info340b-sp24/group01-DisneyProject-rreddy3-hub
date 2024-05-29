@@ -4,7 +4,7 @@ import { AddMeal } from './AddMeal.js';
 import { HomePage } from './HomePage.js';
 import { FavoritesList } from './FavoritesList.js';
 import { Login } from './Login.js';
-import { auth } from '../firebaseConfig.js';
+import { getAuth } from 'firebase/auth';
 import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { Routes, Route, Link } from 'react-router-dom';
@@ -13,7 +13,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 // import INITIAL_REVIEWS from '../data/intitialReviewsData.json';
 
 export function App(props) {
-
+  const auth = getAuth(); 
   const [isAuth, setIsAuth] = useState(false);
   let navigate = useNavigate();
   const signUserOut = () => {
@@ -47,7 +47,7 @@ export function App(props) {
             </button>}
             {!isAuth ? <button className="btn btn-link btn-block m-0">
               <Link to="login">Login</Link>
-            </button> : <button onClick={signUserOut}>Log Out</button>}
+            </button> : <button className="btn btn-link" onClick={signUserOut} style={{ fontSize: '0.8rem', padding: '5px 10px', marginTop: '8px'}}>Log Out</button>}
           </div>
         </div>
       </nav>
@@ -82,7 +82,7 @@ export function App(props) {
             </li>} 
             {!isAuth ? <li className="nav-item">
               <Link to="login" className="nav-link" href="#">Login</Link>
-            </li> : <button onClick={signUserOut}>Log Out</button>}
+            </li> : <button className="btn btn-link" onClick={signUserOut} style={{ fontSize: '0.8rem', padding: '5px 10px' }}>Log Out</button>}
           </ul>
         </div>
       </nav>
