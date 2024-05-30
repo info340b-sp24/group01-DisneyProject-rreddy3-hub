@@ -45,7 +45,7 @@ export function App(props) {
         <div className="collapse" id="navbarToggleExternalContent">
           <div className="bg-body-tertiary shadow-3 p-4">
             <button className="btn btn-link btn-block border-bottom m-0">
-              <Link to="home">Home</Link>
+              <Link to="/">Home</Link>
             </button>
             <button className="btn btn-link btn-block border-bottom m-0">
               <Link to="favorites">Favorites</Link>
@@ -65,7 +65,7 @@ export function App(props) {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
             <li className="nav-item">
-              <Link to="home" className="nav-link">Home</Link>
+              <Link to="/" className="nav-link">Home</Link>
             </li>
             <li className="nav-item">
               <Link to="favorites" className="nav-link">Favorites</Link>
@@ -82,13 +82,10 @@ export function App(props) {
 
       {/* Routes */}
       <Routes>
-        <Route index element={<HomePage />} />
-        <Route path="home" element={<HomePage />}>
-          {/* Change meal page to be dynamic */}
-          {/* <Route path=":mealCard" element={<MealPage updateCurrentReview={updateCurrentReview} currentReview={currentReview}/>}/> */}
-          <Route path=":mealCard" element={<MealPage />} />
-        </Route>
-        {/* <Route path="mealPage" element={<MealPage />} /> */}
+        <Route path="/" element={<HomePage />} />
+        {/* Change meal page to be dynamic */}
+        {/* <Route path=":mealCard" element={<MealPage updateCurrentReview={updateCurrentReview} currentReview={currentReview}/>}/> */}
+        <Route path=":mealCard" element={<MealPage />} />
         <Route path="addMeal" element={<AddMeal />} />
         <Route path="favorites" element={<FavoritesList />} />
         <Route path="login" element={<Login setIsAuth={setIsAuth} />} />
