@@ -153,7 +153,6 @@ export function AddMeal() {
                             <button type="submit" className="btn btn-primary mb-10" style={{marginLeft: '0.5rem'}} >Submit</button>
                         </div>
                     </form> 
-                    navigate(/home); 
                 </section>
             </main>
         </div>
