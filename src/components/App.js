@@ -13,7 +13,7 @@ import { Routes, Route, Link } from 'react-router-dom';
 // import INITIAL_REVIEWS from '../data/intitialReviewsData.json';
 
 export function App(props) {
-  const auth = getAuth(); 
+  const auth = getAuth();
   const [isAuth, setIsAuth] = useState(false);
   let navigate = useNavigate();
   const signUserOut = () => {
@@ -55,7 +55,7 @@ export function App(props) {
             </button>}
             {!isAuth ? <button className="btn btn-link btn-block m-0">
               <Link to="login">Login</Link>
-            </button> : <button className="btn btn-link" onClick={signUserOut} style={{ fontSize: '0.8rem', padding: '5px 10px', marginTop: '8px'}}>Log Out</button>}
+            </button> : <button className="btn btn-link" onClick={signUserOut} style={{ fontSize: '0.8rem', padding: '5px 10px', marginTop: '8px' }}>Log Out</button>}
           </div>
         </div>
       </nav>
@@ -72,7 +72,7 @@ export function App(props) {
             </li>
             {isAuth && <li className="nav-item">
               <Link to="addMeal" className="nav-link" href="#">Add Meal</Link>
-            </li>} 
+            </li>}
             {!isAuth ? <li className="nav-item">
               <Link to="login" className="nav-link" href="#">Login</Link>
             </li> : <button className="btn btn-link" onClick={signUserOut} style={{ fontSize: '0.8rem', padding: '5px 10px' }}>Log Out</button>}
@@ -80,28 +80,28 @@ export function App(props) {
         </div>
       </nav>
 
-        {/* Routes */}
-        <Routes>
-          <Route index element={<HomePage />} />
-          <Route path="home" element={<HomePage />}>
-            {/* Change meal page to be dynamic */}
-            {/* <Route path=":mealCard" element={<MealPage updateCurrentReview={updateCurrentReview} currentReview={currentReview}/>}/> */}
-            <Route path=":mealCard" element={<MealPage />}/>
-          </Route>
-          {/* <Route path="mealPage" element={<MealPage />} /> */}
-          <Route path="addMeal" element={<AddMeal />} />
-          <Route path="favorites" element={<FavoritesList />} />
-          <Route path="login" element={<Login setIsAuth={setIsAuth} />} />
-        </Routes> 
+      {/* Routes */}
+      <Routes>
+        <Route index element={<HomePage />} />
+        <Route path="home" element={<HomePage />}>
+          {/* Change meal page to be dynamic */}
+          {/* <Route path=":mealCard" element={<MealPage updateCurrentReview={updateCurrentReview} currentReview={currentReview}/>}/> */}
+          <Route path=":mealCard" element={<MealPage />} />
+        </Route>
+        {/* <Route path="mealPage" element={<MealPage />} /> */}
+        <Route path="addMeal" element={<AddMeal />} />
+        <Route path="favorites" element={<FavoritesList />} />
+        <Route path="login" element={<Login setIsAuth={setIsAuth} />} />
+      </Routes>
 
-        {/* Chipotle Meal Page */}
-        {/* <MealPage updateCurrentReview={updateCurrentReview} currentReview={currentReview} /> */}
-        <MealPage />
-        
-        {/* Footer */}
-        <footer>
-                <p>&copy; Julie Noh, Kyra Diaz, Tina Song, & Rishita Reddy & INFO 340</p>
-            </footer>
-      </div>
-    )
-  }
+      {/* Chipotle Meal Page */}
+      {/* <MealPage updateCurrentReview={updateCurrentReview} currentReview={currentReview} /> */}
+      <MealPage />
+
+      {/* Footer */}
+      <footer>
+        <p>&copy; Julie Noh, Kyra Diaz, Tina Song, & Rishita Reddy & INFO 340</p>
+      </footer>
+    </div>
+  )
+}

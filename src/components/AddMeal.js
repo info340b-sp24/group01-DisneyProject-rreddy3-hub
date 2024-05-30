@@ -1,6 +1,46 @@
+// sign in to add meals 
 import React, { useState } from 'react';
+import { getDatabase, ref, push } from "firebase/database"; 
+import { useNavigate } from 'react-router-dom'; 
 
 export function AddMeal() {
+    const [meal, setMeal] = useState({
+        name: '',
+        restaurant: '',
+        cuisine: '',
+        price: '',
+        rating: '',
+        review: ''
+    });
+
+    let navigate = useNavigate();
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setMeal(prevState => ({
+            ...prevState,
+            [name]: value                 
+        }));
+    };
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const db = getDatabase();
+        push(ref(db, 'meals'), meal).then(() => {
+            alert("Meal added successfully!"); 
+            setMeal({
+                name: '',
+                restaurant: '',
+                cuisine: '',
+                price: '', 
+                rating: '',
+                review: ''
+            });
+            navigate('/home');
+        }).catch(error => {
+            alert("Error adding meal: " + error.message);
+        });
+    };
 
     return (
         <div>
@@ -12,22 +52,42 @@ export function AddMeal() {
             </header>
 
             <main>
-
                 <section>
-                    <form>
-
+                    <form onSubmit={handleSubmit}>  
                         <div className="input-group mb-3">
                             <label htmlFor="name-input" className="input-group-text">Name:</label>
-                            <input id="name-input" className="form-control" type="text" name="mealname" />
+                            <input
+                                id="name-input"
+                                className="form-control"
+                                type="text"
+                                name="name"
+                                value={meal.name}
+                                onChange={handleChange}
+                                required
+                            />
                         </div>
 
                         <div className="input-group mb-3">
                             <label htmlFor="restaurant-input" className="input-group-text">Restaurant:</label>
-                            <input id="restaurant-input" className="form-control" type="text" name="mealrestaurant" />
+                            <input
+                                id="restaurant-input"
+                                className="form-control"
+                                type="text"
+                                name="restaurant"
+                                value={meal.restaurant}
+                                onChange={handleChange}
+                                required
+                            />
                         </div>
 
-                        <select className="form-select mb-3" aria-label="Select Cuisine">
-                            <option selected>Cuisine:</option>
+                        <select
+                            className="form-select mb-3"
+                            name="cuisine"
+                            value={meal.cuisine}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="" disabled selected>Cuisine:</option>
                             <option value="Mediterranean">Mediterranean</option>
                             <option value="American">American</option>
                             <option value="Hawaiian">Hawaiian</option>
@@ -39,26 +99,29 @@ export function AddMeal() {
                             <option value="Dessert">Dessert</option>
                         </select>
 
-                        <select className="form-select mb-3" aria-label="Select Price">
-                            <option selected>Price:</option>
-                            <option value="1">$</option>
-                            <option value="2">$$</option>
-                            <option value="3">$$$</option>
-                            <option value="4">$$$$</option>
-                            <option value="5">$$$$$</option>
+                        <select
+                            className="form-select mb-3"
+                            name="price"
+                            value={meal.price}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="" disabled selected>Price:</option>
+                            <option value="$">$</option>
+                            <option value="$$">$$</option>
+                            <option value="$$$">$$$</option>
+                            <option value="$$$$">$$$$</option>
+                            <option value="$$$$$">$$$$$</option>
                         </select>
 
-                        {/* <div className="input-group mb-3">
-                            <label htmlFor="address-input" className="input-group-text">Address:</label>
-                            <input id="address-input" className="form-control" type="text" name="mealaddress" placeholder="1234 Main St"
-                                aria-describedby="passwordHelpBlock" />
-                            <div id="passwordHelpBlock" className="form-text" style={{ marginLeft: '7px' }}>
-                                Can't be outside of U-district.
-                            </div>
-                        </div> */}
-
-                        <select className="form-select mb-3" aria-label="Select Rating">
-                            <option selected>Rating:</option> 
+                        <select
+                            className="form-select mb-3"
+                            name="rating"
+                            value={meal.rating}
+                            onChange={handleChange}
+                            required
+                        >
+                            <option value="" disabled selected>Rating:</option>
                             <option value="1">&#9733;</option>
                             <option value="2">&#9733;&#9733;</option>
                             <option value="3">&#9733;&#9733;&#9733;</option>
@@ -66,25 +129,17 @@ export function AddMeal() {
                             <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
                         </select>
 
-                        {/* <div className="input-group mb-3">
-                            <label htmlFor="rating-input" className="input-group-text">Rating:</label> */}
-                            {/* <div className="stars mt-2" style={{ paddingLeft: '5px' }}>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star notchecked"></span>
-                            </div> */}
-                            {/* <option value="1">&#9733;</option>
-                            <option value="2">&#9733;&#9733;</option>
-                            <option value="3">&#9733;&#9733;&#9733;</option>
-                            <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
-                            <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
-                        </div> */}
-
                         <div className="input-group mb-3">
                             <label htmlFor="review-input" className="input-group-text">Review:</label>
-                            <textarea className="form-control" id="review-input" rows="3"></textarea>
+                            <textarea
+                                className="form-control"
+                                id="review-input"
+                                name="review"
+                                rows="3"
+                                value={meal.review}
+                                onChange={handleChange}
+                                required
+                            ></textarea>
                         </div>
 
                         <div className="input-group mb-5">
@@ -97,16 +152,13 @@ export function AddMeal() {
                         <div>
                             <button type="submit" className="btn btn-primary mb-10" style={{marginLeft: '0.5rem'}} >Submit</button>
                         </div>
-
-                    </form>
+                    </form> 
+                    navigate(/home); 
                 </section>
             </main>
         </div>
-    )
+    );
 }
-
-
-
 
 
 

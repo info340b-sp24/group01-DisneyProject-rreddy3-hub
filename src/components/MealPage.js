@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import INITIAL_REVIEWS from '../data/intitialReviewsData.json';
 import { useParams } from 'react-router-dom';
 //import the function from the realtime database module
-import { getDatabase, ref, onValue } from 'firebase/database';
+import { getDatabase, ref, onValue } from 'firebase/database'; 
 
 import _ from 'lodash';
 
@@ -26,7 +26,7 @@ export function MealPage(props) {
         <div className="meal-body">
             {/* <!-- Description (Name, Rating, Heart, Restaurant, Location, Price) --> */}
             {/* When I try to pass in selectedReview as the prop, it doesn't seem to work */}
-            <MealDescription InitialReviewData={firstAladdinsReview} AvgRating={3.75}/>
+            <MealDescription InitialReviewData={firstAladdinsReview} AvgRating={5}/>
 
             {/* Initial Review Card */}
             <InitialReview InitialReviewData={firstAladdinsReview}/>

@@ -45,7 +45,7 @@ export function FavoritesList(props) {
             <main>
                 <div className="container">
                     <div className="row">
-                        <MealCard image="./img/alladins-fries.png" title="Aladdin's Fries, Aladdin's" rating="3.75 / 5 stars" price="$" cuisine="Mediterranean" />
+                        <MealCard image="./img/alladins-fries.png" title="Aladdin's Fries, Aladdin's" rating="5 / 5 stars" price="$" cuisine="Mediterranean" />
                         <MealCard image="./img/pho-shizzle.png" title="Beef Pho, Pho Shizzle" rating="5 / 5 stars" price="$" cuisine="Vietnamese" />
                         <MealCard image="./img/sizzle-and-crunch.png" title="Banh Mi Bowl, Sizzle and Crunch" rating="5 / 5 stars" price="$" cuisine="Vietnamese" />
                         <MealCard image="./img/dont-yell-at-me.png" title="Traditional Milk Tea, Don't Yell At Me" rating="5 / 5 stars" price="$$" cuisine="Boba" />

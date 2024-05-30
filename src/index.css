@@ -155,6 +155,10 @@ footer {
     margin-bottom: 31rem; 
 }
 
+.checked {
+    color: orange; 
+}
+
 /* Default (xs screens) */
 
 @media (min-width: 576px) { 
