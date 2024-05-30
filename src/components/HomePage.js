@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
-// import { Link } from 'react-router-dom'; 
-import { getDatabase, ref, onValue } from "firebase/database"; 
+import { getDatabase, ref, onValue } from "firebase/database";
 
-export function HomePage(props) {
+export function HomePage() {
     const [search, setSearch] = useState('');
     const [priceFilter, setPriceFilter] = useState('None');
     const [cuisineFilter, setCuisineFilter] = useState('None');
@@ -18,7 +17,8 @@ export function HomePage(props) {
             if (data) {
                 const loadedMeals = Object.keys(data).map(key => ({
                     id: key,
-                    ...data[key] 
+                    ...data[key],
+                    liked: localStorage.getItem(`meal-${key}`) === 'true'
                 }));
                 setMeals(loadedMeals);
             } else {

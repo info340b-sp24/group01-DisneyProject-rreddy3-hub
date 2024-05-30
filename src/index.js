@@ -8,6 +8,7 @@ import { initializeApp } from "firebase/app";
 const firebaseConfig = {
   apiKey: "AIzaSyBiToIJV84aUP1lr8X5_SMfTKMZfr2b-Dc",
   authDomain: "uwcrave.firebaseapp.com",
+  databaseURL: "https://uwcrave-default-rtdb.firebaseio.com",
   projectId: "uwcrave",
   storageBucket: "uwcrave.appspot.com",
   messagingSenderId: "665330985758",

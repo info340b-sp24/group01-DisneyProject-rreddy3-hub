@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { MealPage } from './MealPage';
 import { AddMeal } from './AddMeal.js';
 import { HomePage } from './HomePage.js';
@@ -15,22 +15,25 @@ import { Routes, Route, Link } from 'react-router-dom';
 export function App(props) {
   const auth = getAuth();
   const [isAuth, setIsAuth] = useState(false);
+  const [favorites, setFavorites] = useState([]);
   let navigate = useNavigate();
+
   const signUserOut = () => {
     signOut(auth).then(() => {
       localStorage.clear();
       setIsAuth(false);
       navigate("/login");
-    })
-  }
+    });
+  };
 
-  // // meal card stuff
-  // const [currentReview, setCurrentReview] = useState(""); // if a user hasn't chosen a meal, then default to nothing 
-
-  // // function to update current review
-  // const updateCurrentReview = (reviewName) => {
-  //   setCurrentReview(reviewName);
-  // }
+  const handleFavoriteClick = (meal) => {
+    const isFavorite = favorites.some(fav => fav.id === meal.id);
+    if (isFavorite) {
+      setFavorites(favorites.filter(fav => fav.id !== meal.id));
+    } else {
+      setFavorites([...favorites, meal]);
+    }
+  };
 
   return (
     <div>
@@ -82,23 +85,17 @@ export function App(props) {
 
       {/* Routes */}
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        {/* Change meal page to be dynamic */}
-        {/* <Route path=":mealCard" element={<MealPage updateCurrentReview={updateCurrentReview} currentReview={currentReview}/>}/> */}
+        <Route path="/" element={<HomePage favorites={favorites} onFavoriteClick={handleFavoriteClick} />} />
         <Route path=":mealCard" element={<MealPage />} />
         <Route path="addMeal" element={<AddMeal />} />
-        <Route path="favorites" element={<FavoritesList />} />
+        <Route path="favorites" element={<FavoritesList favorites={favorites} />} />
         <Route path="login" element={<Login setIsAuth={setIsAuth} />} />
       </Routes>
-
-      {/* Chipotle Meal Page */}
-      {/* <MealPage updateCurrentReview={updateCurrentReview} currentReview={currentReview} /> */}
-      <MealPage />
 
       {/* Footer */}
       <footer>
         <p>&copy; Julie Noh, Kyra Diaz, Tina Song, & Rishita Reddy & INFO 340</p>
       </footer>
     </div>
-  )
+  );
 }

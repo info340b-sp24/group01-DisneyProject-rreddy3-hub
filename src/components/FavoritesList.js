@@ -1,7 +1,6 @@
 import React from 'react';
-// import './style.css';
 
-export function FavoritesList(props) {
+export function FavoritesList() {
     return (
         <div>
             <header>
@@ -10,7 +9,7 @@ export function FavoritesList(props) {
                     <input type="text" placeholder="Search..." />
                     <div>
                         <label htmlFor="Price">Price:</label>
-                        <select name="cars" id="cars" aria-label="price filter selection">
+                        <select name="price" id="price" aria-label="price filter selection">
                             <option value="None">Select price...</option>
                             <option value="$">$</option>
                             <option value="$$">$$</option>
@@ -19,7 +18,7 @@ export function FavoritesList(props) {
                         </select>
 
                         <label htmlFor="Cuisine">Cuisine:</label>
-                        <select name="cars" id="cars" aria-label="cuisine filter selection">
+                        <select name="cuisine" id="cuisine" aria-label="cuisine filter selection">
                             <option value="None">Select cuisine...</option>
                             <option value="Mediterranean">Mediterranean</option>
                             <option value="Thai">Thai</option>
@@ -31,13 +30,13 @@ export function FavoritesList(props) {
                         </select>
 
                         <label htmlFor="Rating">Rating:</label>
-                        <select name="cars" id="cars" aria-label="rating filter selection">
+                        <select name="rating" id="rating" aria-label="rating filter selection">
                             <option value="None">Select rating...</option>
-                            <option value="1 star">&#9733;</option>
-                            <option value="2 stars">&#9733;&#9733;</option>
-                            <option value="3 stars">&#9733;&#9733;&#9733;</option>
-                            <option value="4 stars">&#9733;&#9733;&#9733;&#9733;</option>
-                            <option value="5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
+                            <option value="1">&#9733;</option>
+                            <option value="2">&#9733;&#9733;</option>
+                            <option value="3">&#9733;&#9733;&#9733;</option>
+                            <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
+                            <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
                         </select>
                     </div>
                 </div>
@@ -45,10 +44,7 @@ export function FavoritesList(props) {
             <main>
                 <div className="container">
                     <div className="row">
-                        <MealCard image="./img/alladins-fries.png" title="Aladdin's Fries, Aladdin's" rating="5 / 5 stars" price="$" cuisine="Mediterranean" />
-                        <MealCard image="./img/pho-shizzle.png" title="Beef Pho, Pho Shizzle" rating="5 / 5 stars" price="$" cuisine="Vietnamese" />
-                        <MealCard image="./img/sizzle-and-crunch.png" title="Banh Mi Bowl, Sizzle and Crunch" rating="5 / 5 stars" price="$" cuisine="Vietnamese" />
-                        <MealCard image="./img/dont-yell-at-me.png" title="Traditional Milk Tea, Don't Yell At Me" rating="5 / 5 stars" price="$$" cuisine="Boba" />
+
                     </div>
                 </div>
             </main>
@@ -56,26 +52,24 @@ export function FavoritesList(props) {
     );
 }
 
-function MealCard ({ image, title, rating, price, cuisine }) {
+function MealCard({ meal, removeFromFavorites }) {
     return (
         <div className="col-md-4">
             <div className="card mb-3" style={{ width: '15rem' }}>
-                <img src={image} alt={title} className="card-img-top pb-3" />
+                <img src={meal.img} alt={meal.name} className="card-img-top pb-3" />
                 <div className="card-body">
-                    <h5 className="favorite-title">{title}</h5>
+                    <h5 className="favorite-title">{meal.name}</h5>
                     <button className="reviews-link btn">See reviews</button>
                     <div className="stars mt-2" style={{ paddingLeft: '5px' }}>
-                        <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star checked"></span>
-                        <span className="fa fa-star"></span>
-                        <span className="fa fa-star"></span>
+                        {[...Array(5)].map((star, index) => (
+                            <span key={index} className={`fa fa-star ${index < meal.userRating ? 'checked' : ''}`}></span>
+                        ))}
                     </div>
-                    <p className="rating">{rating}</p>
-                    <p className="price">{price}</p>
-                    <p className="cuisine">Cuisine: {cuisine}</p>
-                    <button type="button" className="btn btn-light">
-                        <a href="favorites-list.html">Remove</a>
+                    <p className="rating">{meal.userRating} / 5 stars</p>
+                    <p className="price">{meal.price}</p>
+                    <p className="cuisine">Cuisine: {meal.cuisine}</p>
+                    <button type="button" className="btn btn-light" onClick={() => removeFromFavorites(meal.id)}>
+                        Remove
                     </button>
                 </div>
             </div>
