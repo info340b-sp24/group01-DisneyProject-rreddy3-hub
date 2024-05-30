@@ -27,7 +27,7 @@ export function App(props) {
   // // meal card stuff
   // const [currentReview, setCurrentReview] = useState(""); // if a user hasn't chosen a meal, then default to nothing 
 
-  // // function to update current channel
+  // // function to update current review
   // const updateCurrentReview = (reviewName) => {
   //   setCurrentReview(reviewName);
   // }
