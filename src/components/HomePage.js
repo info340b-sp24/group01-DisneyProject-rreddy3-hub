@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getDatabase, ref, onValue } from "firebase/database";
-import { FavoritesList } from './FavoritesList';
 
 export function HomePage() {
     const [search, setSearch] = useState('');
@@ -147,6 +146,7 @@ export function HomePage() {
                         {filterMeals().map((meal, index) => (
                             <div className="col-md-4" key={index}>
                                 <div className="card mb-3" style={{ width: "25rem" }}>
+                                <img src={meal.image} className="card-img-top" alt={meal.name} />
                                     <div className="card-body">
                                         <h2 className="card-title">{meal.name}, {meal.restaurant}</h2>
                                         <button className="reviews-link btn" value={meal.name}>See reviews</button>
@@ -166,7 +166,6 @@ export function HomePage() {
                     </div>
                 </div>
             </main>
-            <FavoritesList favorites={favorites} renderStars={renderStars} renderRating={renderRating} />
         </div>
     );
 }
