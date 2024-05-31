@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getDatabase, ref, onValue } from "firebase/database";
+import { FavoritesList } from './FavoritesList';
 
 export function HomePage() {
     const [search, setSearch] = useState('');
     const [priceFilter, setPriceFilter] = useState('None');
     const [cuisineFilter, setCuisineFilter] = useState('None');
     const [ratingFilter, setRatingFilter] = useState('None');
-    const [meals, setMeals] = useState([]); 
+    const [meals, setMeals] = useState([]);
+    const [favorites, setFavorites] = useState([]); 
 
     useEffect(() => {
         const db = getDatabase();
@@ -34,7 +36,7 @@ export function HomePage() {
 
     const filterMeals = () => {
         return meals.filter(meal => {
-            const mealRating = renderRating(meal); 
+            const mealRating = renderRating(meal);
             return (
                 (priceFilter === 'None' || meal.price === priceFilter) &&
                 (cuisineFilter === 'None' || meal.cuisine.includes(cuisineFilter)) &&
@@ -48,7 +50,7 @@ export function HomePage() {
         const fullStars = Math.floor(rating);
         const halfStar = rating % 1 !== 0;
         const emptyStars = 5 - fullStars - (halfStar ? 1 : 0);
-    
+
         const stars = [];
         for (let i = 0; i < fullStars; i++) {
             stars.push(<span key={i} className="fa fa-star checked"></span>);
@@ -57,7 +59,7 @@ export function HomePage() {
             stars.push(<span key={stars.length} className="fa fa-star-half-o checked"></span>);
         }
         for (let i = 0; i < emptyStars; i++) {
-            stars.push(<span key={stars.length + i} className="fa fa-star"></span>);  
+            stars.push(<span key={stars.length + i} className="fa fa-star"></span>);
         }
         return stars;
     };
@@ -66,11 +68,18 @@ export function HomePage() {
         const newMeals = [...meals];
         newMeals[index].liked = !newMeals[index].liked;
         setMeals(newMeals);
-        localStorage.setItem(`meal-${newMeals[index].id}`, JSON.stringify(newMeals[index].liked)); 
+        localStorage.setItem(`meal-${newMeals[index].id}`, JSON.stringify(newMeals[index].liked));
+        if (newMeals[index].liked) {
+            addToFavorites(newMeals[index]); 
+        }
     };
 
     const handleInputChange = (e) => {
         setSearch(e.target.value);
+    };
+
+    const addToFavorites = (meal) => {
+        setFavorites(prevFavorites => [...prevFavorites, meal]);
     };
 
     return (
@@ -144,8 +153,7 @@ export function HomePage() {
                     <div className="row">
                         {filterMeals().map((meal, index) => (
                             <div className="col-md-4" key={index}>
-                                <div className="card mb-3" style={{ width: "15rem" }}>
-                                    <img src={meal.image} className="card-img-top" alt={`${meal.name} from ${meal.restaurant}`} />
+                                <div className="card mb-3" style={{ width: "25rem" }}>
                                     <div className="card-body">
                                         <h2 className="card-title">{meal.name}, {meal.restaurant}</h2>
                                         <button className="reviews-link btn" value={meal.name}>See reviews</button>
@@ -165,6 +173,7 @@ export function HomePage() {
                     </div>
                 </div>
             </main>
+            <FavoritesList favorites={favorites} renderStars={renderStars} renderRating={renderRating} />
         </div>
     );
 }

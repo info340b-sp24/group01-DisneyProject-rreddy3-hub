@@ -1,6 +1,16 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { getDatabase, ref, onValue } from "firebase/database";
 
-export function FavoritesList() {
+export function FavoritesList({ favorites, renderStars, renderRating }) {
+
+    useEffect(() => {
+        const db = getDatabase();
+        const mealsRef = ref(db, 'meals');
+        onValue(mealsRef, (snapshot) => {
+            const data = snapshot.val();
+        });
+    }, []); 
+
     return (
         <div>
             <header>
@@ -44,35 +54,25 @@ export function FavoritesList() {
             <main>
                 <div className="container">
                     <div className="row">
-
+                        {favorites.map((meal, index) => (
+                            <div className="col-md-4" key={index}>
+                                <div className="card mb-3" style={{ width: "25rem" }}>
+                                    <div className="card-body">
+                                        <h2 className="card-title">{meal.name}, {meal.restaurant}</h2>
+                                        <button className="reviews-link btn" value={meal.name}>See reviews</button>
+                                        <div className="stars">
+                                            {renderStars(renderRating(meal))}
+                                        </div>
+                                        <p className="card-text rating">{renderRating(meal)} / 5 stars</p>
+                                        <p className="card-text">{meal.price}</p>
+                                        <p className="card-text">Cuisine: {meal.cuisine}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        ))}
                     </div>
                 </div>
             </main>
-        </div>
-    );
-}
-
-function MealCard({ meal, removeFromFavorites }) {
-    return (
-        <div className="col-md-4">
-            <div className="card mb-3" style={{ width: '15rem' }}>
-                <img src={meal.img} alt={meal.name} className="card-img-top pb-3" />
-                <div className="card-body">
-                    <h5 className="favorite-title">{meal.name}</h5>
-                    <button className="reviews-link btn">See reviews</button>
-                    <div className="stars mt-2" style={{ paddingLeft: '5px' }}>
-                        {[...Array(5)].map((star, index) => (
-                            <span key={index} className={`fa fa-star ${index < meal.userRating ? 'checked' : ''}`}></span>
-                        ))}
-                    </div>
-                    <p className="rating">{meal.userRating} / 5 stars</p>
-                    <p className="price">{meal.price}</p>
-                    <p className="cuisine">Cuisine: {meal.cuisine}</p>
-                    <button type="button" className="btn btn-light" onClick={() => removeFromFavorites(meal.id)}>
-                        Remove
-                    </button>
-                </div>
-            </div>
         </div>
     );
 }
