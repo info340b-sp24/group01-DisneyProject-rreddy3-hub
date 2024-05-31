@@ -69,17 +69,10 @@ export function HomePage() {
         newMeals[index].liked = !newMeals[index].liked;
         setMeals(newMeals);
         localStorage.setItem(`meal-${newMeals[index].id}`, JSON.stringify(newMeals[index].liked));
-        if (newMeals[index].liked) {
-            addToFavorites(newMeals[index]); 
-        }
     };
 
     const handleInputChange = (e) => {
         setSearch(e.target.value);
-    };
-
-    const addToFavorites = (meal) => {
-        setFavorites(prevFavorites => [...prevFavorites, meal]);
     };
 
     return (

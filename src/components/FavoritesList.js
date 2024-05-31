@@ -1,78 +1,139 @@
-import React, { useEffect } from 'react';
-import { getDatabase, ref, onValue } from "firebase/database";
+import React, { useState, useEffect } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
 
-export function FavoritesList({ favorites, renderStars, renderRating }) {
+export function FavoritesList(props) {
+    const [notes, setNotes] = useState(() => {
+        const storedNotes = JSON.parse(localStorage.getItem('mealNotes'));
+        return storedNotes || {};
+    });
 
     useEffect(() => {
-        const db = getDatabase();
-        const mealsRef = ref(db, 'meals');
-        onValue(mealsRef, (snapshot) => {
-            const data = snapshot.val();
-        });
-    }, []); 
+        localStorage.setItem('mealNotes', JSON.stringify(notes));
+    }, [notes]);
+
+    const handleNoteChange = (mealId, value) => {
+        setNotes(prevNotes => ({
+            ...prevNotes,
+            [mealId]: value
+        }));
+    };
 
     return (
         <div>
             <header>
                 <div className="header-text">
-                    <h1>UW Crave</h1>
-                    <input type="text" placeholder="Search..." />
-                    <div>
-                        <label htmlFor="Price">Price:</label>
-                        <select name="price" id="price" aria-label="price filter selection">
-                            <option value="None">Select price...</option>
-                            <option value="$">$</option>
-                            <option value="$$">$$</option>
-                            <option value="$$$">$$$</option>
-                            <option value="$$$$">$$$$</option>
-                        </select>
-
-                        <label htmlFor="Cuisine">Cuisine:</label>
-                        <select name="cuisine" id="cuisine" aria-label="cuisine filter selection">
-                            <option value="None">Select cuisine...</option>
-                            <option value="Mediterranean">Mediterranean</option>
-                            <option value="Thai">Thai</option>
-                            <option value="Korean">Korean</option>
-                            <option value="Mexican">Mexican</option>
-                            <option value="Vietnamese">Vietnamese</option>
-                            <option value="Indian">Indian</option>
-                            <option value="Boba">Boba</option>
-                        </select>
-
-                        <label htmlFor="Rating">Rating:</label>
-                        <select name="rating" id="rating" aria-label="rating filter selection">
-                            <option value="None">Select rating...</option>
-                            <option value="1">&#9733;</option>
-                            <option value="2">&#9733;&#9733;</option>
-                            <option value="3">&#9733;&#9733;&#9733;</option>
-                            <option value="4">&#9733;&#9733;&#9733;&#9733;</option>
-                            <option value="5">&#9733;&#9733;&#9733;&#9733;&#9733;</option>
-                        </select>
-                    </div>
+                    <h1>Favorites List</h1>
                 </div>
             </header>
             <main>
                 <div className="container">
                     <div className="row">
-                        {favorites.map((meal, index) => (
-                            <div className="col-md-4" key={index}>
-                                <div className="card mb-3" style={{ width: "25rem" }}>
-                                    <div className="card-body">
-                                        <h2 className="card-title">{meal.name}, {meal.restaurant}</h2>
-                                        <button className="reviews-link btn" value={meal.name}>See reviews</button>
-                                        <div className="stars">
-                                            {renderStars(renderRating(meal))}
-                                        </div>
-                                        <p className="card-text rating">{renderRating(meal)} / 5 stars</p>
-                                        <p className="card-text">{meal.price}</p>
-                                        <p className="card-text">Cuisine: {meal.cuisine}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        ))}
+                        <MealCard
+                            image="./img/alladins-fries.png"
+                            title="Aladdin's Fries, Aladdin's"
+                            rating="3.75 / 5 stars"
+                            price="$"
+                            cuisine="Mediterranean"
+                            mealId="meal1"
+                            note={notes['meal1'] || ''}
+                            handleNoteChange={handleNoteChange}
+                        />
+                        <MealCard
+                            image="./img/pho-shizzle.png"
+                            title="Beef Pho, Pho Shizzle" 
+                            rating="5 / 5 stars"
+                            price="$"
+                            cuisine="Vietnamese"
+                            mealId="meal2"
+                            note={notes['meal2'] || ''}
+                            handleNoteChange={handleNoteChange}
+                        />
+                        <MealCard
+                            image="./img/sizzle-and-crunch.png"
+                            title="Banh Mi Bowl, Sizzle and Crunch"
+                            rating="5 / 5 stars" 
+                            price="$"
+                            cuisine="Vietnamese"
+                            mealId="meal3"
+                            note={notes['meal3'] || ''}
+                            handleNoteChange={handleNoteChange}
+                        />
+                        <MealCard
+                            image="./img/dont-yell-at-me.png"
+                            title="Traditional Milk Tea, Don't Yell At Me"
+                            rating="5 / 5 stars"
+                            price="$$"
+                            cuisine="Boba"
+                            mealId="meal4"
+                            note={notes['meal4'] || ''}
+                            handleNoteChange={handleNoteChange}
+                        />
                     </div>
                 </div>
             </main>
+            <footer>
+                <p>&copy; Julie Noh, Kyra Diaz, Tina Song, & Rishita Reddy & INFO 340</p>
+            </footer>
+        </div>
+    );
+}
+
+function MealCard({ image, title, rating, price, cuisine, mealId, note, handleNoteChange }) {
+    const [localNote, setLocalNote] = useState(note || '');
+    const [editMode, setEditMode] = useState(!note); // Initially set to true if there's no note
+
+    const handleChange = (event) => {
+        const { value } = event.target;
+        setLocalNote(value);
+    };
+
+    const handleSubmit = () => {
+        handleNoteChange(mealId, localNote);
+        setEditMode(false); // After submitting, disable edit mode
+    };
+
+    const handleEdit = () => {
+        setEditMode(true); // Enable edit mode when clicking on the note
+    };
+
+    return (
+        <div className="col-md-4">
+            <div className="card mb-3" style={{ width: '25rem' }}>
+                <img src={image} alt={title} className="card-img-top pb-3" />
+                <div className="card-body">
+                    <h5 className="favorite-title">{title}</h5>
+                    <p className="reviews-link">See reviews</p>
+                    <div className="stars mt-2" style={{ paddingLeft: '5px' }}>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star checked"></span>
+                        <span className="fa fa-star"></span>
+                        <span className="fa fa-star"></span>
+                    </div>
+                    <p className="rating">{rating}</p>
+                    <p className="price">{price}</p>
+                    <p className="cuisine">Cuisine: {cuisine}</p>
+                    {editMode ? (
+                        <textarea
+                            className="form-control"
+                            placeholder="Add a note..."
+                            value={localNote}
+                            onChange={handleChange}
+                        />
+                    ) : (
+                        <div onClick={handleEdit} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+                            {localNote ? localNote : <span style={{ fontStyle: 'italic', color: '#adb5bd' }}>Click here to add a memo...</span>}
+                            <FontAwesomeIcon icon={faPencilAlt} style={{ marginLeft: '5px' }} />
+                        </div>
+                    )}
+                    {editMode && (
+                        <button type="button" className="btn btn-primary" onClick={handleSubmit}>
+                            Add note
+                        </button>
+                    )}
+                </div>
+            </div>
         </div>
     );
 }
