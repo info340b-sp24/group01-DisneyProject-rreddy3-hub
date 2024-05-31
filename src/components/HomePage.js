@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getDatabase, ref, onValue } from "firebase/database";
 
-export function HomePage() {
+export function HomePage(props) {
+    const { favorites, onFavoriteClick } = props;
     const [search, setSearch] = useState('');
     const [priceFilter, setPriceFilter] = useState('None');
     const [cuisineFilter, setCuisineFilter] = useState('None');
     const [ratingFilter, setRatingFilter] = useState('None');
     const [meals, setMeals] = useState([]);
-    const [favorites, setFavorites] = useState([]); 
 
     useEffect(() => {
         const db = getDatabase();
@@ -19,14 +19,14 @@ export function HomePage() {
                 const loadedMeals = Object.keys(data).map(key => ({
                     id: key,
                     ...data[key],
-                    liked: localStorage.getItem(`meal-${key}`) === 'true'
+                    liked: favorites.some(fav => fav.id === key)
                 }));
                 setMeals(loadedMeals);
             } else {
                 setMeals([]);
             }
         });
-    }, []);
+    }, [favorites]);
 
     const renderRating = (meal) => {
         const rating = meal.userRating ? parseFloat(meal.userRating) : parseFloat(meal.rating);
@@ -64,11 +64,13 @@ export function HomePage() {
     };
 
     const handleClick = (index) => {
-        const newMeals = [...meals];
-        newMeals[index].liked = !newMeals[index].liked;
-        setMeals(newMeals);
-        localStorage.setItem(`meal-${newMeals[index].id}`, JSON.stringify(newMeals[index].liked));
-    };
+        const meal = meals[index];
+        onFavoriteClick(meal);
+        const updatedMeals = [...meals];
+        updatedMeals[index].liked = !updatedMeals[index].liked;
+        setMeals(updatedMeals);
+        localStorage.setItem(`meal-${meal.id}`, JSON.stringify(updatedMeals[index].liked));
+    };  
 
     const handleInputChange = (e) => {
         setSearch(e.target.value);

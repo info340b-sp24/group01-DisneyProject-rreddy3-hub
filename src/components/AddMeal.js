@@ -36,7 +36,7 @@ export function AddMeal() {
                 rating: '',
                 review: ''
             });
-            navigate('/home');
+            navigate('/');
         }).catch(error => {
             alert("Error adding meal: " + error.message);
         });
@@ -158,6 +158,7 @@ export function AddMeal() {
         </div>
     );
 }
+
 
 
 

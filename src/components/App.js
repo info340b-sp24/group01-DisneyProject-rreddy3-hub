@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { MealPage } from './MealPage';
 import { AddMeal } from './AddMeal.js';
 import { HomePage } from './HomePage.js';
@@ -9,10 +9,7 @@ import { signOut } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import { Routes, Route, Link } from 'react-router-dom';
 
-// import data
-// import INITIAL_REVIEWS from '../data/intitialReviewsData.json';
-
-export function App(props) {
+export function App() {
   const auth = getAuth();
   const [isAuth, setIsAuth] = useState(false);
   const [favorites, setFavorites] = useState([]);
@@ -28,11 +25,14 @@ export function App(props) {
 
   const handleFavoriteClick = (meal) => {
     const isFavorite = favorites.some(fav => fav.id === meal.id);
+    let updatedFavorites = [];
     if (isFavorite) {
-      setFavorites(favorites.filter(fav => fav.id !== meal.id));
+      updatedFavorites = favorites.filter(fav => fav.id !== meal.id);
     } else {
-      setFavorites([...favorites, meal]);
+      updatedFavorites = [...favorites, meal];
     }
+    setFavorites(updatedFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
 
   return (
@@ -88,7 +88,7 @@ export function App(props) {
         <Route path="/" element={<HomePage favorites={favorites} onFavoriteClick={handleFavoriteClick} />} />
         <Route path=":mealCard" element={<MealPage />} />
         <Route path="addMeal" element={<AddMeal />} />
-        <Route path="favorites" element={<FavoritesList favorites={favorites} />} />
+        <Route path="favorites" element={<FavoritesList favorites={favorites} setFavorites={setFavorites} />} />
         <Route path="login" element={<Login setIsAuth={setIsAuth} />} />
       </Routes>
 
