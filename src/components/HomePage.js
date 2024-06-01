@@ -70,7 +70,7 @@ export function HomePage(props) {
         updatedMeals[index].liked = !updatedMeals[index].liked;
         setMeals(updatedMeals);
         localStorage.setItem(`meal-${meal.id}`, JSON.stringify(updatedMeals[index].liked));
-    };  
+    };
 
     const handleInputChange = (e) => {
         setSearch(e.target.value);
@@ -148,7 +148,7 @@ export function HomePage(props) {
                         {filterMeals().map((meal, index) => (
                             <div className="col-md-4" key={index}>
                                 <div className="card mb-3" style={{ width: "25rem" }}>
-                                <img src={meal.image} className="card-img-top" alt={meal.name} />
+                                    <img src={meal.image} className="card-img-top meal-image" alt={meal.name} />
                                     <div className="card-body">
                                         <h2 className="card-title">{meal.name}, {meal.restaurant}</h2>
                                         <button className="reviews-link btn" value={meal.name}>See reviews</button>

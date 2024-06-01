@@ -159,6 +159,11 @@ footer {
     color: orange; 
 }
 
+.meal-image {
+    width: 40px;
+    height: 350px; 
+}
+
 /* Default (xs screens) */
 
 @media (min-width: 576px) { 

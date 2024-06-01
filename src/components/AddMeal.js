@@ -1,16 +1,36 @@
-// sign in to add meals 
 import React, { useState } from 'react';
-import { getDatabase, ref, push } from "firebase/database"; 
+import { getDatabase, ref, push } from "firebase/database";
 import { useNavigate } from 'react-router-dom'; 
+import { getStorage, uploadBytes, getDownloadURL } from 'firebase/storage'; 
+import { ref as sRef } from 'firebase/storage';
+import { v4 } from 'uuid';
 
 export function AddMeal() {
+    const storage = getStorage();
+    const [imageUpload, setImageUpload] = useState(null);
+
+    const [imageURL, setImageURL] = useState('');
+
+    const uploadImage = (callback) => {
+        if (imageUpload == null) return;
+        const imageRef = sRef(storage, `images/${imageUpload.name + v4()}`);
+        uploadBytes(imageRef, imageUpload).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then((url) => {
+                setImageURL(url);
+                callback(url);
+                alert("Image Uploaded");
+            })
+        });
+    };
+
     const [meal, setMeal] = useState({
         name: '',
         restaurant: '',
         cuisine: '',
         price: '',
         rating: '',
-        review: ''
+        review: '',
+        image: ''
     });
 
     let navigate = useNavigate();
@@ -19,28 +39,39 @@ export function AddMeal() {
         const { name, value } = e.target;
         setMeal(prevState => ({
             ...prevState,
-            [name]: value                 
+            [name]: value
         }));
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const db = getDatabase();
-        push(ref(db, 'meals'), meal).then(() => {
-            alert("Meal added successfully!"); 
-            setMeal({
-                name: '',
-                restaurant: '',
-                cuisine: '',
-                price: '', 
-                rating: '',
-                review: ''
+        if (imageUpload) {
+            uploadImage((url) => {
+                const db = getDatabase();
+                push(ref(db, 'meals'), {
+                    ...meal,
+                    image: url
+                }).then(() => {
+                    alert("Meal added successfully!");
+                    setMeal({
+                        name: '',
+                        restaurant: '',
+                        cuisine: '',
+                        price: '',
+                        rating: '',
+                        review: '',
+                        image: ''
+                    });
+                    navigate('/');
+                }).catch(error => {
+                    alert("Error adding meal: " + error.message); 
+                });
             });
-            navigate('/');
-        }).catch(error => {
-            alert("Error adding meal: " + error.message);
-        });
+        } else {
+            alert("Please upload an image.");
+        }
     };
+
 
     return (
         <div>
@@ -53,7 +84,7 @@ export function AddMeal() {
 
             <main>
                 <section>
-                    <form onSubmit={handleSubmit}>  
+                    <form onSubmit={handleSubmit}>
                         <div className="input-group mb-3">
                             <label htmlFor="name-input" className="input-group-text">Name:</label>
                             <input
@@ -142,22 +173,25 @@ export function AddMeal() {
                             ></textarea>
                         </div>
 
-                        <div className="input-group mb-5">
-                            <button type="button" className="btn btn-outline-primary" style={{marginTop: '0.5rem', marginLeft: '0.5rem'}} >
-                                <i className="fa fa-camera" style={{paddingRight: '0.3rem'}} ></i>
-                                Add a photo update
-                            </button>
+                        <div>
+                            <input type="file" onChange={(event) => { setImageUpload(event.target.files[0])}} style={{ marginTop: '0.5rem', marginLeft: '0.5rem' }} />
+                            {imageURL && <img src={imageURL} alt="Uploaded" className="meal-image" />}
                         </div>
 
                         <div>
-                            <button type="submit" className="btn btn-primary mb-10" style={{marginLeft: '0.5rem'}} >Submit</button>
+                            <button type="submit" className="btn btn-primary" style={{ marginTop: '1.5rem', marginLeft: '0.5rem', marginBottom: '10.2rem'}} >Submit</button>
                         </div>
-                    </form> 
+                    </form>
                 </section>
             </main>
         </div>
     );
 }
+
+
+
+
+
 
 
 
