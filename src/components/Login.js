@@ -19,7 +19,7 @@ export function Login(props) {
     return <div className="loginPage">
         <header>
             <div className="header-text">
-                <h1>Sign in With Google to Add Meals</h1>
+                <h1>Sign in With Google to Add Meals and Favorite Items!</h1>
                 <p>Show others what it's like there now</p>
             </div>
         </header>

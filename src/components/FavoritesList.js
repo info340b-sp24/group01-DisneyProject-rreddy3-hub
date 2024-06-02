@@ -138,9 +138,33 @@
 //     );
 // }
 
-import React, { useEffect } from 'react';
+// import React, { useEffect } from 'react';
+
+import React, { useState, useEffect } from 'react';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faPencilAlt } from '@fortawesome/free-solid-svg-icons';
+
+// import { getDatabase, ref, set as firebaseSet } from 'firebase/database';
 
 export function FavoritesList(props) {
+    // trying to add notes feature
+    // const [localNote, setLocalNote] = useState(note || '');
+    // const [editMode, setEditMode] = useState(!note); // Initially set to true if there's no note
+
+    // const handleChange = (event) => {
+    //     const { value } = event.target;
+    //     setLocalNote(value);
+    // };
+
+    // const handleSubmit = () => {
+    //     handleNoteChange(mealId, localNote);
+    //     setEditMode(false); // After submitting, disable edit mode
+    // };
+
+    // const handleEdit = () => {
+    //     setEditMode(true); // Enable edit mode when clicking on the note
+    // };
+    // end
 
     const renderRating = (meal) => {
         const rating = meal.userRating ? parseFloat(meal.userRating) : parseFloat(meal.rating);
@@ -202,6 +226,28 @@ export function FavoritesList(props) {
                                         <p className="card-text rating">{renderRating(meal)} / 5 stars</p>
                                         <p className="card-text">{meal.price}</p>
                                         <p className="card-text">Cuisine: {meal.cuisine}</p>
+                                        
+                                        {/* notes */}
+                                        {/* {editMode ? (
+                                            <textarea
+                                                className="form-control"
+                                                placeholder="Add a note..."
+                                                value={localNote}
+                                                onChange={handleChange}
+                                            />
+                                        ) : (
+                                            <div onClick={handleEdit} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center' }}>
+                                                {localNote ? localNote : <span style={{ fontStyle: 'italic', color: '#adb5bd' }}>Click here to add a memo...</span>}
+                                                <FontAwesomeIcon icon={faPencilAlt} style={{ marginLeft: '5px' }} />
+                                            </div>
+                                        )}
+                                        {editMode && (
+                                            <button type="button" className="btn btn-primary" onClick={handleSubmit}>
+                                                Add note
+                                            </button>
+                                        )} */}
+                                        {/* end notes */}
+
                                         <button className="btn btn-primary btn-sm" onClick={() => handleRemoveFromFavorites(index)}>
                                             Remove from Favorites
                                         </button>
