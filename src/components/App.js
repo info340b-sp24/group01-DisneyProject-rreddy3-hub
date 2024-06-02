@@ -50,9 +50,9 @@ export function App() {
             <button className="btn btn-link btn-block border-bottom m-0">
               <Link to="/">Home</Link>
             </button>
-            <button className="btn btn-link btn-block border-bottom m-0">
+            {isAuth && <button className="btn btn-link btn-block border-bottom m-0">
               <Link to="favorites">Favorites</Link>
-            </button>
+            </button>}
             {isAuth && <button className="btn btn-link btn-block m-0">
               <Link to="addMeal">Add Meal</Link>
             </button>}
@@ -70,9 +70,9 @@ export function App() {
             <li className="nav-item">
               <Link to="/" className="nav-link">Home</Link>
             </li>
-            <li className="nav-item">
+            {isAuth && <li className="nav-item">
               <Link to="favorites" className="nav-link">Favorites</Link>
-            </li>
+            </li>}
             {isAuth && <li className="nav-item">
               <Link to="addMeal" className="nav-link" href="#">Add Meal</Link>
             </li>}

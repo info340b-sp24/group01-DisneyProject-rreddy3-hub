@@ -190,8 +190,9 @@ export function FavoritesList(props) {
                 <div className="container">
                     <div className="row">
                         {props.favorites.map((meal, index) => (
-                            <div className="col-md-4" key={index}>
-                                <div className="card mb-3" style={{ width: "25rem" }}>
+                            <div className="card-container col-md-auto col-xl-4" key={index}>
+                                <div className="homepage-card card m-3" style={{ width: "25rem" }}>
+                                <img src={meal.image} className="card-img-top meal-image" alt={meal.name} />
                                     <div className="card-body">
                                         <h2 className="card-title">{meal.name}, {meal.restaurant}</h2>
                                         <button className="reviews-link btn" value={meal.name}>See reviews</button>
