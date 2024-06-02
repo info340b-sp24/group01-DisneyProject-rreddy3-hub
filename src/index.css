@@ -164,7 +164,7 @@ footer {
     height: 350px; 
 }
 
-/* Default (xs screens) */
+/* Media Queries */
 
 @media (min-width: 576px) { 
     #laptop-nav {
@@ -189,4 +189,13 @@ footer {
         padding-left: 12px;  
     }  
     
+}
+
+/* Fixes home page card spacing between 1200px-1400px screens */
+@media (min-width: 1200px) and (max-width: 1400px) { 
+    .homepage-card {
+        flex: 0 0 48%;
+        max-width: 100%;
+        margin: 10%;
+    }
 }
