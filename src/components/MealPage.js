@@ -39,7 +39,7 @@ export function MealPage(props) {
     if (!mealData) {
         return <div>Loading...</div>;
     }
-    
+
     return(
         <div className="meal-body">
             {/* <!-- Description (Name, Rating, Heart, Restaurant, Location, Price) --> */}
@@ -57,6 +57,13 @@ export function MealPage(props) {
         </div>
     );
 }
+
+//tentative average rating method
+const calculateAvgRating = (reviews) => {
+    if (reviews.length === 0) return 0;
+    const total = reviews.reduce((acc, review) => acc + review.userRating, 0);
+    return (total / reviews.length).toFixed(1);
+};
 
 // Initial Review Data/Meal Data
 const firstAladdinsReview = {
