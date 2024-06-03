@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { MealPage } from './MealPage';
 import { AddMeal } from './AddMeal.js';
 import { HomePage } from './HomePage.js';
 import { FavoritesList } from './FavoritesList.js';
@@ -86,7 +85,6 @@ export function App() {
       {/* Routes */}
       <Routes>
         <Route path="/" element={<HomePage favorites={favorites} onFavoriteClick={handleFavoriteClick} />} />
-        <Route path=":mealCard" element={<MealPage />} />
         <Route path="addMeal" element={<AddMeal />} />
         <Route path="favorites" element={<FavoritesList favorites={favorites} setFavorites={setFavorites} />} />
         <Route path="login" element={<Login setIsAuth={setIsAuth} />} />

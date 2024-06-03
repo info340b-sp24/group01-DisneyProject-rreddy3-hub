@@ -1,5 +1,5 @@
 import React, { useState, useEffect} from 'react';
-import INITIAL_REVIEWS from '../data/intitialReviewsData.json';
+import INITIAL_REVIEWS from '../../data/intitialReviewsData.json';
 import { useParams } from 'react-router-dom';
 //import the function from the realtime database module
 import { getDatabase, ref, onValue } from 'firebase/database'; 

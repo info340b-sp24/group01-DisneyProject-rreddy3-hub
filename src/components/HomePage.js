@@ -151,7 +151,7 @@ export function HomePage(props) {
                                     <img src={meal.image} className="card-img-top meal-image" alt={meal.name} />
                                     <div className="card-body">
                                         <h2 className="card-title">{meal.name}, {meal.restaurant}</h2>
-                                        <button className="reviews-link btn" value={meal.name}>See reviews</button>
+                                            <p>"{meal.review}"</p>
                                         <div className="stars">
                                             {renderStars(renderRating(meal))}
                                         </div>
