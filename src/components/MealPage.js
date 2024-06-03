@@ -114,27 +114,6 @@ function MealDescription({ InitialReviewData, AvgRating }) {
     );
 }
 
-// Generates a star rating div depending on the given meal's rating;
-// if the rating is a decimal, it will round to the nearest whole number
-// NOT SURE IF THIS WORKS (does not lol)
-// function StarRatings({rating}) {
-//     let stars = () => {
-//         for (let i = 1; i <= 5; i++) {
-//             if (i <= rating) {
-//                return <span className="fa fa-star checked"></span>;
-//             }
-//             else {
-//                 return <span className="fa fa-star"></span>;
-//             }
-//         }
-//     }
-
-//     return(
-//         <div className="stars mt-2" style="padding-left: 5px;">
-//             {stars}
-//         </div>
-//     );
-// }
 
 // renders the actual review of the given meal
 function InitialReview( {InitialReviewData} ) {
