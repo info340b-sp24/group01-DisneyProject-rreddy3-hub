@@ -8,21 +8,7 @@ import { v4 } from 'uuid';
 export function AddMeal() {
     const storage = getStorage();
     const [imageUpload, setImageUpload] = useState(null);
-
     const [imageURL, setImageURL] = useState('');
-
-    const uploadImage = (callback) => {
-        if (imageUpload == null) return;
-        const imageRef = sRef(storage, `images/${imageUpload.name + v4()}`);
-        uploadBytes(imageRef, imageUpload).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then((url) => {
-                setImageURL(url);
-                callback(url);
-                alert("Image Uploaded");
-            })
-        });
-    };
-
     const [meal, setMeal] = useState({
         name: '',
         restaurant: '',
@@ -41,6 +27,22 @@ export function AddMeal() {
             ...prevState,
             [name]: value
         }));
+    };
+
+    const handleImageChange = (e) => {
+        setImageUpload(e.target.files[0]);
+    };
+
+    const uploadImage = (callback) => {
+        if (imageUpload == null) return;
+        const imageRef = sRef(storage, `images/${imageUpload.name + v4()}`);
+        uploadBytes(imageRef, imageUpload).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then((url) => {
+                setImageURL(url);
+                callback(url);
+                alert("Image Uploaded");
+            })
+        });
     };
 
     const handleSubmit = (e) => {
@@ -71,7 +73,6 @@ export function AddMeal() {
             alert("Please upload an image.");
         }
     };
-
 
     return (
         <div>
@@ -118,7 +119,7 @@ export function AddMeal() {
                             onChange={handleChange}
                             required
                         >
-                            <option value="" disabled selected>Cuisine:</option>
+                            <option value="" disabled>Cuisine:</option>
                             <option value="Mediterranean">Mediterranean</option>
                             <option value="American">American</option>
                             <option value="Hawaiian">Hawaiian</option>
@@ -137,7 +138,7 @@ export function AddMeal() {
                             onChange={handleChange}
                             required
                         >
-                            <option value="" disabled selected>Price:</option>
+                            <option value="" disabled>Price:</option>
                             <option value="$">$</option>
                             <option value="$$">$$</option>
                             <option value="$$$">$$$</option>
@@ -152,7 +153,7 @@ export function AddMeal() {
                             onChange={handleChange}
                             required
                         >
-                            <option value="" disabled selected>Rating:</option>
+                            <option value="" disabled>Rating:</option>
                             <option value="1">&#9733;</option>
                             <option value="2">&#9733;&#9733;</option>
                             <option value="3">&#9733;&#9733;&#9733;</option>
@@ -174,7 +175,7 @@ export function AddMeal() {
                         </div>
 
                         <div>
-                            <input type="file" onChange={(event) => { setImageUpload(event.target.files[0])}} style={{ marginTop: '0.5rem', marginLeft: '0.5rem' }} />
+                            <input type="file" onChange={handleImageChange} style={{ marginTop: '0.5rem', marginLeft: '0.5rem' }} />
                             {imageURL && <img src={imageURL} alt="Uploaded" className="meal-image" />}
                         </div>
 
@@ -187,12 +188,3 @@ export function AddMeal() {
         </div>
     );
 }
-
-
-
-
-
-
-
-
-
