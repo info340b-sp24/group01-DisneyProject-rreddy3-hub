@@ -77,8 +77,8 @@ button {
     text-decoration: none;
 }
 
-/* Meal Page CSS */
-nav .btn {
+/* Meal Page CSS (discarded) */
+/* nav .btn {
     background-color: #f5f3f2;
 }
 
@@ -139,7 +139,8 @@ nav .btn {
     display: block;
     margin-left: auto;
     margin-right: auto;
-}
+} */
+
 footer {
     color: black; 
 }

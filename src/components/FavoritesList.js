@@ -1,6 +1,18 @@
 import React, { useState, useEffect } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export function FavoritesList(props) {
+    // see reviews pop up
+    const [show, setShow] = useState(false);
+    const [currentMeal, setCurrentMeal] = useState(null);
+ 
+    const handleClose = () => setShow(false);
+    const handleShow = (meal) => {
+        setCurrentMeal(meal);
+        setShow(true);
+    };
+
     const renderRating = (meal) => {
         const rating = meal.userRating ? parseFloat(meal.userRating) : parseFloat(meal.rating);
         return rating;
@@ -54,7 +66,9 @@ export function FavoritesList(props) {
                                 <img src={meal.image} className="card-img-top meal-image" alt={meal.name} />
                                     <div className="card-body">
                                         <h2 className="card-title">{meal.name}, {meal.restaurant}</h2>
-                                        <button className="reviews-link btn" value={meal.name}>See reviews</button>
+                                        <Button variant="info" onClick={() => handleShow(meal)}>
+                                           Show Review
+                                        </Button>
                                         <div className="stars">
                                             {renderStars(renderRating(meal))}
                                         </div>
@@ -71,6 +85,20 @@ export function FavoritesList(props) {
                     </div>
                 </div>
             </main>
+            
+            {currentMeal && (
+               <Modal show={show} onHide={handleClose}>
+                   <Modal.Header closeButton>
+                       <Modal.Title>{currentMeal.name} Review</Modal.Title>
+                   </Modal.Header>
+                   <Modal.Body>{currentMeal.review}</Modal.Body>
+                   <Modal.Footer>
+                       <Button variant="primary" onClick={handleClose}>
+                           Close
+                       </Button> 
+                   </Modal.Footer>
+               </Modal>
+           )}
         </div>
     );
 } 

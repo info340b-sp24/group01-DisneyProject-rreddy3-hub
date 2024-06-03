@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { getDatabase, ref, onValue } from "firebase/database";
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
 export function HomePage(props) {
+    const [show, setShow] = useState(false);
+    const [currentMeal, setCurrentMeal] = useState(null);
+ 
+    const handleClose = () => setShow(false);
+    const handleShow = (meal) => {
+        setCurrentMeal(meal);
+        setShow(true);
+    };
+ 
     const { favorites, onFavoriteClick } = props;
     const [search, setSearch] = useState('');
     const [priceFilter, setPriceFilter] = useState('None');
@@ -151,7 +162,9 @@ export function HomePage(props) {
                                     <img src={meal.image} className="card-img-top meal-image" alt={meal.name} />
                                     <div className="card-body">
                                         <h2 className="card-title">{meal.name}, {meal.restaurant}</h2>
-                                            <p>"{meal.review}"</p>
+                                        <Button variant="info" onClick={() => handleShow(meal)}>
+                                           Show Review
+                                        </Button>
                                         <div className="stars">
                                             {renderStars(renderRating(meal))}
                                         </div>
@@ -168,6 +181,20 @@ export function HomePage(props) {
                     </div>
                 </div>
             </main>
+
+            {currentMeal && (
+               <Modal show={show} onHide={handleClose}>
+                   <Modal.Header closeButton>
+                       <Modal.Title>{currentMeal.name} Review</Modal.Title>
+                   </Modal.Header>
+                   <Modal.Body>{currentMeal.review}</Modal.Body>
+                   <Modal.Footer>
+                       <Button variant="primary" onClick={handleClose}>
+                           Close
+                       </Button> 
+                   </Modal.Footer>
+               </Modal>
+           )}
         </div>
     );
 }
