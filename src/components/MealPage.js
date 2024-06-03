@@ -1,13 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import INITIAL_REVIEWS from '../data/intitialReviewsData.json';
 import { useParams } from 'react-router-dom';
 //import the function from the realtime database module
 import { getDatabase, ref, onValue } from 'firebase/database'; 
 
+
 import _ from 'lodash';
 
 // returns entire meal page body
 export function MealPage(props) {
+    const [mealData, setMealData] = useState(null);
+    const [reviews, setReviews] = useState([]);
     // get a reference to the database service
     const db = getDatabase();
 
@@ -21,7 +24,22 @@ export function MealPage(props) {
     
     // this might be the issue? I don't think its finding the review based on the url
     // const selectedReview =  _.find(mealsRef, {"name":currentReview}); // look through meals; if key = mealNameString, then access that
+    useEffect(() => {
+        const mealsRef = ref(db, `meals/${mealNameString}`);
 
+        onValue(mealsRef, (snapshot) => {
+            const data = snapshot.val();
+            if (data) {
+                setMealData(data);
+                setReviews(data.reviews || []);
+            }
+        });
+    }, [db, mealNameString]);
+
+    if (!mealData) {
+        return <div>Loading...</div>;
+    }
+    
     return(
         <div className="meal-body">
             {/* <!-- Description (Name, Rating, Heart, Restaurant, Location, Price) --> */}
@@ -113,7 +131,6 @@ function MealDescription({ InitialReviewData, AvgRating }) {
         </header>
     );
 }
-
 
 // renders the actual review of the given meal
 function InitialReview( {InitialReviewData} ) {
